@@ -1,0 +1,63 @@
+Design and build a modern, warm, trustworthy one-page (or multi-section) website for NAMA Polyclinic, a medical and paramedical polyclinic located at WH5P+62F, Jal El Dib, Lebanon. Phone: 78 87 68 25. Instagram: @namapolyclinic. Tagline: "Because every journey matters."
+
+Logo (attached): The logo shows the wordmark "NAMA" in wide-tracked olive-green capital letters, with the sub-line "PARAMEDICAL AND MEDICAL POLYCLINIC" in small bronze/gold tracked capitals beneath it. Below that sits a simple flat-icon mark: an adult figure (olive green) gently holding the hand of a smaller child figure (terracotta), with a small two-leaf plant sprouting between them and a soft ground swoosh underneath — symbolizing guided growth/care across ages. Under the icon is the italic tagline "Because every journey matters" in dark neutral text. Use this logo as-is in the header (linked to home) and footer; use the adult-and-child-with-plant icon motif as a recurring brand symbol (e.g., favicon, section dividers, loading states).
+
+Exact brand colors (extracted from the logo — use these hex values throughout, do not substitute generic medical blue/green)
+Background / cream: 
+#F4E6D9 — main page background, card backgrounds on darker sections.
+Primary olive green: 
+#75745A — logo wordmark, primary buttons, nav active states, section headings, icon strokes, the solid banner/footer background (this is the color used for the bottom curved banner in the logo — reuse it as a footer or section background treatment).
+Bronze / gold accent: 
+#6B4E33 — small caps labels, tagline text, secondary accents, hover states.
+Terracotta accent: 
+#A8815B — used sparingly for the "child/growth" figure — good for highlighting the paediatric-facing content (psychomotricité, orthophonie for kids) or as a warm accent on icons/badges.
+Dark neutral text: 
+#2E2820 — body copy, for strong readability against the cream background instead of pure black.
+White: 
+#FFFFFF — text/icons placed on the olive-green banner or buttons.
+Brand & visual style
+Clean, calm, reassuring "healthcare" feel — lots of the cream background as breathing room, soft rounded corners, generous padding, no clutter. Mirror the logo's soft, organic, slightly botanical warmth (the plant motif) rather than a clinical, sterile look.
+Typography: an elegant, wide-tracked (letter-spaced) all-caps sans-serif for headings/logo-adjacent text (matching the "N A M A" spacing), paired with a clean, highly legible sans-serif for body copy. Use the bronze/gold color for small tracked-caps labels (eyebrow text above headings), the way the logo uses it for the sub-tagline.
+Include simple fine-line (single-stroke, minimalist) illustrations in the olive-green brand color, in the same flat/simple style family as the logo's adult-and-child icon — no photos-only look. Specifically:
+A fine-line drawing of a clinic building/facade for the hero section or about section.
+Small fine-line icon illustrations representing each specialty: a speech bubble/mouth (orthophonie), a head with a brain/thought bubble (psychologie), a child in motion / balance figure (psychomotricité), and a plate with a leaf or apple (diététique).
+Keep all line illustrations consistent in stroke weight and style so they read as one icon set.
+Site should feel bilingual-ready: build primarily in French (since the specialties are named in French), with structure that makes it easy to add an English and/or Arabic toggle later.
+Site structure & sections
+Header / Navigation
+Logo (left), nav links (Accueil, À propos, Nos services, Notre équipe, Témoignages, FAQ, Contact), and a prominent "Prendre rendez-vous" (Book an appointment) button in the brand color, always visible/sticky.
+Phone number (78 87 68 25) visible in the header, click-to-call on mobile.
+Hero section
+Clinic name "NAMA Polyclinic", the tagline "Because every journey matters" (or its French equivalent, "Parce que chaque parcours compte"), a one-sentence description of what NAMA offers.
+Primary CTA button: "Prendre rendez-vous". Secondary CTA: "Découvrir nos spécialités".
+Fine-line clinic illustration or a soft olive-green background shape alongside the text; optionally echo the logo's adult-and-child icon motif at a larger scale as a hero graphic.
+About / Why NAMA
+Short paragraph on the polyclinic's mission: multidisciplinary, family-friendly, medical + paramedical care under one roof.
+3–4 trust badges/icons: e.g. "Équipe pluridisciplinaire", "Approche personnalisée", "Suivi de l'enfant à l'adulte", "Rendez-vous flexibles" (adjust to what's actually true for NAMA).
+Our Services / Specialties (core section — make this the visual centerpiece) Present four clear, equally-weighted cards/blocks, each with a fine-line icon, title, and 2–3 sentence description of what the specialist treats and who it's for:
+Orthophonie (Speech-Language Therapy) — language/speech/swallowing disorders, articulation, stuttering, in children and adults.
+Psychologie — individual therapy, emotional/behavioral support, child and adult psychology, counseling.
+Psychomotricité — motor development, coordination, sensory integration, mainly for children but also adults with rehabilitation needs.
+Diététique / Nutrition — personalized nutrition plans, weight management, therapeutic diets, family nutrition guidance. Each card should link to (or anchor-scroll to) more detail and a "Prendre rendez-vous avec un/e [spécialiste]" mini-CTA.
+Meet the team
+Grid of practitioner profile cards: photo placeholder, name, title/specialty, short bio/credentials line. Structure this so it's easy to add more practitioners later (it's a polyclinic, so leave room to also list general practitioners or other specialists NAMA may add).
+How it works / What to expect
+Simple 3–4 step visual (numbered or icon-based): e.g. "1. Prenez rendez-vous → 2. Bilan initial → 3. Plan de soins personnalisé → 4. Suivi régulier." This reduces first-visit anxiety, which matters a lot for a paramedical clinic.
+Testimonials
+3+ short patient/parent quotes with name + relationship (e.g., "Maman de Léa"). Use placeholder quotes clearly marked as such if none are supplied yet.
+FAQ
+Accordion with 5–6 common questions: Do you accept insurance? Do I need a doctor's referral? What ages do you treat? How long is a first session? Do you offer sessions in French/English/Arabic? What are your cancellation policies?
+Contact & Location
+Address (WH5P+62F, Jal El Dib), phone number (78 87 68 25, click-to-call), embedded Google Map, opening hours table, and a simple contact form (Name, Phone, Email, Specialty needed, Message).
+Add WhatsApp click-to-chat button using the same phone number, since it's a common booking channel in Lebanon.
+Footer
+Logo (olive-green background matching the banner treatment in the logo file, with logo/text in white/cream), short tagline "Because every journey matters", quick links, Instagram icon linking to @namapolyclinic, address, phone, and copyright line.
+Functional requirements
+Fully responsive (mobile-first — most visitors will be on phones).
+Fast-loading, accessible (proper contrast using the brand colors, alt text on all icons/images, keyboard-navigable nav and forms).
+Sticky/floating "Prendre rendez-vous" button on mobile for easy access while scrolling.
+SEO basics: page title and meta description mentioning "polyclinique Jal El Dib", "orthophoniste", "psychologue", "psychomotricienne", "diététicienne" so the clinic is findable for these specific searches.
+Smooth scroll / subtle fade-in animations on section entry — tasteful, not distracting.
+Deliverable
+
+A polished, production-ready landing page (single scrolling page with anchored sections, or a small multi-page site if preferred) that a nervous first-time patient or a parent looking for a specialist for their child would find calming, professional, and easy to act on — ending every section with a clear path to booking an appointment.

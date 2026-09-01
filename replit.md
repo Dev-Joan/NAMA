@@ -1,6 +1,6 @@
-# [Project name]
+# NAMA Polyclinic
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A warm, French-first landing page for NAMA Polyclinic in Jal El Dib, helping families discover multidisciplinary care and request an appointment.
 
 ## Run & Operate
 
@@ -22,23 +22,29 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/nama-polyclinic/src/App.tsx` — one-page experience, navigation, specialties, FAQ, contact form, and clinic details
+- `artifacts/nama-polyclinic/src/index.css` — NAMA visual system, responsive layout, animation, and accessibility states
+- `.conversation/attached_assets/WhatsApp_Image_2026-09-01_at_12.16.19_1788299977736.jpeg` — supplied NAMA logo asset
+- `artifacts/api-server` — shared API scaffold; the landing page is currently frontend-only
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The site is a single scrolling page with hash anchors so patients can move from discovery to booking without route changes.
+- The contact form validates locally and provides a clear confirmation state; direct phone and WhatsApp actions remain available for urgent or immediate booking.
+- Practitioner portraits are intentional line-art placeholders until NAMA supplies approved team photography.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+Visitors can learn about NAMA's four specialties, meet the care team, understand the first-visit process, read common answers, locate the clinic, and start an appointment request by form, phone, or WhatsApp.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+The user requested a warm, trustworthy healthcare feel in French using the exact NAMA cream, olive, bronze, terracotta, dark neutral, and white palette.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Keep the supplied logo image path intact when moving assets; it is intentionally used as-is in the header and footer.
+- The page uses the artifact workflow's injected `PORT` and `BASE_PATH`; do not run the Vite command without those workflow values.
 
 ## Pointers
 
