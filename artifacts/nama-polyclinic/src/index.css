@@ -139,6 +139,33 @@ h1,h2,h3 { font-weight:400; }
 .about-mark::before { content:""; position:absolute; inset:7% 10%; border:1px solid rgba(244,230,217,.25); border-radius:46% 54% 48% 52%; transform:rotate(-9deg); }
 .about-mark svg { width:min(100%, 400px); z-index:1; }
 
+.clinic-story { background:#f6eade; }
+.clinic-grid { display:grid; grid-template-columns:.8fr 1.2fr; align-items:center; gap:90px; }
+.clinic-copy h2 { margin:16px 0 22px; font-family:var(--font-serif); font-size:clamp(46px, 5vw, 72px); line-height:.97; }
+.clinic-copy h2 em { color:var(--olive); }
+.clinic-copy p { max-width:430px; color:rgba(46,40,32,.7); font-size:17px; line-height:1.7; }
+.clinic-visual { min-height:460px; position:relative; display:flex; align-items:flex-end; justify-content:center; }
+.building-photo-slot { position:absolute; z-index:0; top:0; right:0; width:58%; height:260px; border:1px dashed rgba(117,116,90,.55); background:linear-gradient(135deg, rgba(244,230,217,.75), rgba(217,217,199,.55)); display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--bronze); text-align:center; }
+.building-photo-slot::before, .building-photo-slot::after { content:""; position:absolute; pointer-events:none; background:rgba(117,116,90,.2); }
+.building-photo-slot::before { width:1px; height:100%; left:50%; top:0; }
+.building-photo-slot::after { width:100%; height:1px; left:0; top:50%; }
+.photo-slot-icon { position:relative; z-index:1; width:42px; height:42px; display:grid; place-items:center; border:1px solid currentColor; border-radius:50%; background:rgba(244,230,217,.82); }
+.building-photo-slot span { position:relative; z-index:1; margin-top:12px; font-family:var(--font-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+.building-photo-slot small { position:relative; z-index:1; margin-top:6px; font-size:11px; opacity:.72; }
+.clinic-drawing-wrap { position:relative; z-index:1; width:94%; margin-top:150px; padding:12px 0 0; background:rgba(246,234,222,.7); }
+.clinic-illustration { display:block; width:100%; height:auto; overflow:visible; animation:clinic-float 7s ease-in-out infinite; }
+.clinic-line { stroke:var(--olive); stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+.clinic-line-draw { stroke-dasharray:1450; stroke-dashoffset:1450; }
+.clinic-visual.is-visible .clinic-line-draw { animation:draw-clinic 2.8s cubic-bezier(.22,.9,.3,1) forwards; }
+.clinic-cross { stroke:var(--terracotta); stroke-width:2.3; }
+.clinic-detail { stroke:var(--bronze); stroke-width:1.15; opacity:.72; }
+.clinic-dot { fill:var(--terracotta); animation:clinic-pulse 2.4s ease-in-out infinite; }
+.clinic-dot-delay { animation-delay:1.1s; }
+.clinic-caption { display:block; margin-top:-4px; color:var(--bronze); font-family:var(--font-mono); font-size:9px; letter-spacing:.12em; text-align:center; text-transform:uppercase; }
+@keyframes draw-clinic { to { stroke-dashoffset:0; } }
+@keyframes clinic-float { 0%, 100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
+@keyframes clinic-pulse { 0%, 100% { opacity:.45; transform:scale(.82); transform-origin:center; } 50% { opacity:1; transform:scale(1.15); transform-origin:center; } }
+
 .services { background:#f6eade; }
 .services-header { display:flex; justify-content:space-between; align-items:end; gap:40px; margin-bottom:60px; }
 .services-header .section-heading { max-width:670px; }
@@ -164,6 +191,8 @@ h1,h2,h3 { font-weight:400; }
 .person-portrait { background:var(--secondary); height:270px; margin-bottom:19px; display:grid; place-items:center; position:relative; overflow:hidden; }
 .person-portrait::after { content:""; position:absolute; width:170px; height:170px; bottom:-90px; border-radius:50%; background:var(--olive); opacity:.3; }
 .person-portrait svg { width:110px; color:var(--olive); z-index:1; stroke-width:1; }
+.person-portrait .photo-slot-icon { position:absolute; top:15px; right:15px; width:34px; height:34px; color:var(--bronze); border-color:rgba(107,78,51,.45); }
+.photo-slot-label { position:absolute; z-index:2; left:15px; bottom:13px; color:var(--bronze); font-family:var(--font-mono); font-size:8px; letter-spacing:.12em; text-transform:uppercase; }
 .person-card:nth-child(2) .person-portrait { background:#ead4c5; }
 .person-card:nth-child(2) .person-portrait::after { background:var(--terracotta); }
 .person-card:nth-child(3) .person-portrait { background:#d9d9c7; }
@@ -245,7 +274,7 @@ h1,h2,h3 { font-weight:400; }
 
 .footer { background:var(--olive); color:var(--white); padding:68px 0 30px; border-radius:52% 52% 0 0 / 10% 10% 0 0; }
 .footer-grid { display:grid; grid-template-columns:1.3fr .8fr .9fr; gap:70px; align-items:start; }
-.footer-logo { width:220px; height:176px; object-fit:contain; object-position:center; opacity:.98; }
+.footer-logo { width:220px; height:150px; padding:14px 20px; object-fit:contain; object-position:center; background:var(--cream); border-radius:24px 24px 8px 8px; opacity:.98; }
 .footer-tagline { color:var(--cream); font-family:var(--font-serif); font-size:23px; margin:17px 0; }
 .footer-copy { color:rgba(255,255,255,.65); max-width:250px; font-size:12px; line-height:1.55; }
 .footer h3 { color:var(--cream); font-family:var(--font-mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:20px; }
@@ -276,6 +305,7 @@ h1,h2,h3 { font-weight:400; }
   .hero { min-height:auto; padding:145px 0 75px; }
   .hero::after { width:290px; height:290px; right:-130px; top:120px; }
   .hero-grid, .about-grid, .faq-grid, .contact-grid, .location-grid { grid-template-columns:1fr; gap:46px; }
+  .clinic-grid { grid-template-columns:1fr; gap:30px; }
   .hero h1 { font-size:clamp(58px, 17vw, 90px); }
   .hero-lead { font-size:16px; }
   .hero-visual { min-height:310px; order:-1; margin-bottom:-20px; }
@@ -285,6 +315,9 @@ h1,h2,h3 { font-weight:400; }
   .about { padding:75px 0; }
   .about-mark { order:-1; }
   .about-mark svg { width:70%; }
+  .clinic-visual { min-height:390px; }
+  .clinic-drawing-wrap { width:100%; margin-top:135px; }
+  .building-photo-slot { width:68%; height:220px; }
   .trust-grid { gap:18px; }
   .services-header { display:block; margin-bottom:38px; }
   .service-index { display:block; margin-top:25px; }

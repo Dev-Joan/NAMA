@@ -6,6 +6,7 @@ import {
   ChevronRight,
   Clock3,
   HeartHandshake,
+  ImagePlus,
   Instagram,
   MapPin,
   Menu,
@@ -23,6 +24,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 
 import namaLogo from '../../../.conversation/attached_assets/WhatsApp_Image_2026-09-01_at_12.16.19_1788299977736.jpeg';
 import extractedLogo from './assets/nama-logo.png';
+import topLogo from './assets/nama-top-logo.png';
 import './index.css';
 
 const queryClient = new QueryClient();
@@ -116,6 +118,21 @@ function Portrait({ index }: { index: number }) {
   );
 }
 
+function ClinicIllustration() {
+  return (
+    <svg className="clinic-illustration" viewBox="0 0 620 390" fill="none" role="img" aria-label="Illustration au trait de la clinique NAMA">
+      <path className="clinic-line clinic-line-draw" d="M76 317h469M103 317V142l206-96 210 96v175M103 142h416M309 46v-25" />
+      <path className="clinic-line clinic-line-draw" d="m82 143 227-111 231 111M254 317v-95h112v95M275 222h70v95M273 250h73M172 176h57v54h-57zM390 176h57v54h-57z" />
+      <path className="clinic-line clinic-line-draw" d="M190 176v54M418 176v54M201 176v54M429 176v54M171 200h58M389 200h58" />
+      <path className="clinic-line clinic-cross" d="M294 87h30M309 72v30" />
+      <path className="clinic-line clinic-detail" d="M132 317c10-28 16-40 29-53 13 13 19 25 29 53M454 317c9-23 14-32 25-43 11 11 16 20 24 43" />
+      <path className="clinic-line clinic-detail" d="M117 275c17-7 30-7 45 0M440 275c17-7 30-7 45 0" />
+      <circle className="clinic-dot" cx="122" cy="127" r="5" />
+      <circle className="clinic-dot clinic-dot-delay" cx="497" cy="127" r="5" />
+    </svg>
+  );
+}
+
 function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -171,7 +188,7 @@ function Home() {
       <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
         <div className="container nav-shell">
           <a href="#accueil" className="brand-lockup" onClick={closeMenu} data-testid="link-logo-home" aria-label="NAMA Polyclinic, retour à l'accueil">
-            <img src={extractedLogo} alt="NAMA Polyclinic — Because every journey matters" />
+            <img src={topLogo} alt="NAMA Polyclinic — logo original" />
           </a>
           <nav className={`nav-links ${menuOpen ? 'open' : ''}`} aria-label="Navigation principale">
             {navItems.map(([label, href]) => (
@@ -227,6 +244,28 @@ function Home() {
           </div>
         </section>
 
+        <section className="section clinic-story" aria-labelledby="clinic-title">
+          <div className="container clinic-grid">
+            <div className="clinic-copy reveal">
+              <div className="eyebrow">Le lieu NAMA</div>
+              <h2 id="clinic-title">Un espace pour<br /><em>chaque étape.</em></h2>
+              <p>Un cabinet lumineux et accueillant, pensé pour que les enfants, les adultes et leurs proches se sentent à leur place dès le premier rendez-vous.</p>
+              <a href="#contact" className="mini-link" data-testid="link-clinic-contact">Découvrir NAMA <ArrowUpRight size={13} /></a>
+            </div>
+            <div className="clinic-visual reveal reveal-delay-1">
+              <div className="building-photo-slot" data-testid="photo-slot-building" aria-label="Emplacement réservé à la photo du bâtiment">
+                <div className="photo-slot-icon"><ImagePlus size={22} /></div>
+                <span>Photo du bâtiment</span>
+                <small>À ajouter prochainement</small>
+              </div>
+              <div className="clinic-drawing-wrap">
+                <ClinicIllustration />
+                <span className="clinic-caption">Un même toit · plusieurs chemins</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="services" className="section services">
           <div className="container">
             <div className="services-header reveal">
@@ -267,7 +306,11 @@ function Home() {
                 ['Mme Rita Saad', 'Diététicienne-nutritionniste', 'Une approche simple, réaliste et personnalisée de la nutrition.'],
               ].map(([name, specialty, bio], index) => (
                 <article className={`person-card reveal reveal-delay-${(index % 3) + 1}`} key={name} data-testid={`card-practitioner-${index}`}>
-                  <div className="person-portrait"><Portrait index={index} /></div>
+                  <div className="person-portrait" data-testid={`photo-slot-practitioner-${index}`} aria-label={`Emplacement photo pour ${name}`}>
+                    <div className="photo-slot-icon"><ImagePlus size={20} /></div>
+                    <Portrait index={index} />
+                    <span className="photo-slot-label">Photo à ajouter</span>
+                  </div>
                   <h3>{name}</h3>
                   <div className="person-specialty">{specialty}</div>
                   <p className="person-bio">{bio}</p>
@@ -377,7 +420,7 @@ function Home() {
       <footer className="footer">
         <div className="container">
           <div className="footer-grid">
-            <div><img className="footer-logo" src={extractedLogo} alt="NAMA Polyclinic — Because every journey matters" /><p className="footer-copy">Une polyclinique médicale et paramédicale où chaque parcours est accueilli avec soin.</p></div>
+            <div><img className="footer-logo" src={topLogo} alt="NAMA Polyclinic — logo original" /><p className="footer-copy">Une polyclinique médicale et paramédicale où chaque parcours est accueilli avec soin.</p></div>
             <div><h3>Explorer</h3><div className="footer-links">{navItems.slice(0, 5).map(([label, href]) => <a key={href} href={href} data-testid={`link-footer-${label.toLowerCase().replaceAll(' ', '-')}`}>{label}</a>)}</div></div>
             <div><h3>Nous trouver</h3><div className="footer-contact"><a href="tel:+96178876825" data-testid="link-footer-phone">78 87 68 25</a><a href="https://wa.me/96178876825" target="_blank" rel="noreferrer" data-testid="link-footer-whatsapp">WhatsApp</a><a href="https://www.instagram.com/namapolyclinic" target="_blank" rel="noreferrer" data-testid="link-footer-instagram">@namapolyclinic</a><span>WH5P+62F, Jal El Dib<br />Lebanon</span></div></div>
           </div>
