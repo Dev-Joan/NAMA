@@ -76,7 +76,7 @@ button { cursor: pointer; }
 .container { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
 .nav-shell { display:flex; align-items:center; justify-content:space-between; gap:24px; }
 .brand-lockup { display:flex; align-items:center; gap:12px; min-width:170px; }
-.brand-lockup img { width: 112px; height: 66px; object-fit: cover; object-position: top; mix-blend-mode: multiply; border-radius: 4px; }
+.brand-lockup img { width: 132px; height: 82px; object-fit: contain; object-position: center; }
 .nav-links { display:flex; align-items:center; justify-content:center; gap:25px; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--bronze); }
 .nav-links a { position:relative; padding:10px 0; transition:color .2s ease; }
 .nav-links a::after { content:""; position:absolute; left:0; right:100%; bottom:3px; height:1px; background:var(--terracotta); transition:right .25s ease; }
@@ -245,7 +245,7 @@ h1,h2,h3 { font-weight:400; }
 
 .footer { background:var(--olive); color:var(--white); padding:68px 0 30px; border-radius:52% 52% 0 0 / 10% 10% 0 0; }
 .footer-grid { display:grid; grid-template-columns:1.3fr .8fr .9fr; gap:70px; align-items:start; }
-.footer-logo { width:190px; height:112px; object-fit:cover; object-position:top; mix-blend-mode:screen; opacity:.92; border-radius:4px; }
+.footer-logo { width:220px; height:176px; object-fit:contain; object-position:center; opacity:.98; }
 .footer-tagline { color:var(--cream); font-family:var(--font-serif); font-size:23px; margin:17px 0; }
 .footer-copy { color:rgba(255,255,255,.65); max-width:250px; font-size:12px; line-height:1.55; }
 .footer h3 { color:var(--cream); font-family:var(--font-mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:20px; }
@@ -267,7 +267,7 @@ h1,h2,h3 { font-weight:400; }
   .container { width:min(100% - 36px, 600px); }
   .site-header { padding:12px 0; }
   .site-header.scrolled { padding:8px 0; }
-  .brand-lockup img { width:94px; height:55px; }
+  .brand-lockup img { width:116px; height:76px; }
   .nav-links { display:none; position:absolute; top:74px; left:18px; right:18px; padding:20px; background:var(--cream); box-shadow:0 14px 30px rgba(46,40,32,.12); flex-direction:column; align-items:stretch; gap:4px; }
   .nav-links.open { display:flex; }
   .nav-links a { padding:12px 4px; }

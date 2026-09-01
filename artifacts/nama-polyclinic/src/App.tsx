@@ -22,6 +22,7 @@ import {
 import { TooltipProvider } from '@/components/ui/tooltip';
 
 import namaLogo from '../../../.conversation/attached_assets/WhatsApp_Image_2026-09-01_at_12.16.19_1788299977736.jpeg';
+import extractedLogo from './assets/nama-logo.png';
 import './index.css';
 
 const queryClient = new QueryClient();
@@ -170,7 +171,7 @@ function Home() {
       <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
         <div className="container nav-shell">
           <a href="#accueil" className="brand-lockup" onClick={closeMenu} data-testid="link-logo-home" aria-label="NAMA Polyclinic, retour à l'accueil">
-            <img src={namaLogo} alt="NAMA Polyclinic — Because every journey matters" />
+            <img src={extractedLogo} alt="NAMA Polyclinic — Because every journey matters" />
           </a>
           <nav className={`nav-links ${menuOpen ? 'open' : ''}`} aria-label="Navigation principale">
             {navItems.map(([label, href]) => (
@@ -376,7 +377,7 @@ function Home() {
       <footer className="footer">
         <div className="container">
           <div className="footer-grid">
-            <div><img className="footer-logo" src={namaLogo} alt="NAMA Polyclinic" /><div className="footer-tagline">Because every journey matters.</div><p className="footer-copy">Une polyclinique médicale et paramédicale où chaque parcours est accueilli avec soin.</p></div>
+            <div><img className="footer-logo" src={extractedLogo} alt="NAMA Polyclinic — Because every journey matters" /><p className="footer-copy">Une polyclinique médicale et paramédicale où chaque parcours est accueilli avec soin.</p></div>
             <div><h3>Explorer</h3><div className="footer-links">{navItems.slice(0, 5).map(([label, href]) => <a key={href} href={href} data-testid={`link-footer-${label.toLowerCase().replaceAll(' ', '-')}`}>{label}</a>)}</div></div>
             <div><h3>Nous trouver</h3><div className="footer-contact"><a href="tel:+96178876825" data-testid="link-footer-phone">78 87 68 25</a><a href="https://wa.me/96178876825" target="_blank" rel="noreferrer" data-testid="link-footer-whatsapp">WhatsApp</a><a href="https://www.instagram.com/namapolyclinic" target="_blank" rel="noreferrer" data-testid="link-footer-instagram">@namapolyclinic</a><span>WH5P+62F, Jal El Dib<br />Lebanon</span></div></div>
           </div>
