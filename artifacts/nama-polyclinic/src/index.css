@@ -116,9 +116,10 @@ h1,h2,h3 { font-weight:400; }
 .hero-note { display:flex; align-items:center; gap:13px; margin-top:42px; color:var(--bronze); font-size:12px; }
 .hero-note span { width:34px; height:34px; border:1px solid rgba(107,78,51,.38); border-radius:50%; display:grid; place-items:center; }
 .hero-visual { min-height:480px; display:grid; place-items:center; position:relative; }
-.hero-logo-medallion { width:min(100%, 500px); aspect-ratio:1; display:grid; place-items:center; position:relative; border:1px solid rgba(117,116,90,.45); border-radius:50%; background:rgba(244,230,217,.36); animation:medallion-float 7s ease-in-out infinite; }
+.hero-logo-medallion { width:min(100%, 500px); aspect-ratio:1; display:grid; place-items:center; position:relative; border:1px solid rgba(117,116,90,.45); border-radius:50%; background:radial-gradient(circle at 50% 43%, rgba(255,255,255,.46), rgba(244,230,217,.14) 55%, rgba(168,129,91,.08)); box-shadow:0 22px 42px rgba(107,78,51,.08); animation:medallion-float 7s ease-in-out infinite; }
 .hero-logo-medallion::before { content:""; position:absolute; inset:20px; border:1px solid rgba(168,129,91,.38); border-radius:50%; }
-.hero-logo-medallion img { position:relative; z-index:1; width:74%; height:auto; object-fit:contain; }
+.hero-logo-medallion::after { content:""; position:absolute; width:82%; height:42%; border:1px solid rgba(168,129,91,.38); border-left-color:transparent; border-right-color:transparent; border-radius:50%; transform:rotate(-24deg); animation:medallion-orbit 10s linear infinite; }
+.hero-logo-medallion img { position:relative; z-index:1; width:46%; height:auto; object-fit:contain; }
 .hero-art { width:min(100%, 510px); height:auto; }
 .hero-art .line { fill:none; stroke:var(--olive); stroke-width:1.45; stroke-linecap:round; stroke-linejoin:round; }
 .hero-art .soft { fill:var(--secondary); stroke:none; opacity:.55; }
@@ -169,6 +170,7 @@ h1,h2,h3 { font-weight:400; }
 @keyframes clinic-float { 0%, 100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
 @keyframes clinic-pulse { 0%, 100% { opacity:.45; transform:scale(.82); transform-origin:center; } 50% { opacity:1; transform:scale(1.15); transform-origin:center; } }
 @keyframes medallion-float { 0%, 100% { transform:translateY(0) rotate(0deg); } 50% { transform:translateY(-7px) rotate(.6deg); } }
+@keyframes medallion-orbit { from { transform:rotate(-24deg); } to { transform:rotate(336deg); } }
 
 .services { background:#f6eade; }
 .services-header { display:flex; justify-content:space-between; align-items:end; gap:40px; margin-bottom:60px; }

@@ -24,6 +24,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import namaLogo from '../../../.conversation/attached_assets/WhatsApp_Image_2026-09-01_at_12.16.19_1788299977736.jpeg';
 import extractedLogo from './assets/nama-logo.png';
 import topLogo from './assets/nama-top-logo.png';
+import namaIcon from './assets/nama-icon.png';
 import './index.css';
 
 const queryClient = new QueryClient();
@@ -219,7 +220,7 @@ function Home() {
             </div>
             <div className="hero-visual reveal reveal-delay-2">
               <div className="hero-logo-medallion">
-                <img src={topLogo} alt="NAMA Polyclinic — logo original" />
+                <img src={namaIcon} alt="Symbole NAMA représentant un adulte, un enfant et une pousse" />
               </div>
             </div>
           </div>
