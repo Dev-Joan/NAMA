@@ -16,7 +16,6 @@ import {
   Plus,
   Send,
   ShieldCheck,
-  Sparkles,
   Stethoscope,
   X,
 } from 'lucide-react';
@@ -219,8 +218,9 @@ function Home() {
               <div className="hero-note"><span><HeartHandshake size={16} /></span> Parce que chaque parcours compte.</div>
             </div>
             <div className="hero-visual reveal reveal-delay-2">
-              <BrandMark className="hero-art" />
-              <div className="hero-stamp"><Sparkles size={22} /><span>Care<br />with<br />meaning</span></div>
+              <div className="hero-logo-medallion">
+                <img src={topLogo} alt="NAMA Polyclinic — logo original" />
+              </div>
             </div>
           </div>
         </section>
