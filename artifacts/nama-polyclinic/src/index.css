@@ -124,8 +124,6 @@ h1,h2,h3 { font-weight:400; }
 .hero-organic-art { width:min(100%, 500px); min-height:430px; position:relative; display:grid; place-items:center; isolation:isolate; }
 .hero-organic-art::before { content:""; position:absolute; inset:8% 4% 4% 12%; z-index:-2; background:#e8d8c8; border-radius:61% 39% 24% 76% / 51% 42% 58% 49%; transform:rotate(-8deg); }
 .hero-mark { width:min(68%, 310px); height:auto; object-fit:contain; filter:drop-shadow(0 18px 14px rgba(107,78,51,.12)); animation:hero-mark-float 7s ease-in-out infinite; }
-.hero-vine { position:absolute; right:1%; bottom:4%; width:150px; color:var(--terracotta); opacity:.72; }
-.hero-vine path { stroke:currentColor; stroke-width:1.35; stroke-linecap:round; stroke-linejoin:round; }
 
 .olive-band { background:var(--olive); color:var(--white); }
 .olive-band .eyebrow { color:var(--cream); }
@@ -310,7 +308,6 @@ h1,h2,h3 { font-weight:400; }
   .hero-visual { min-height:310px; order:-1; margin-bottom:-20px; }
   .hero-organic-art { min-height:300px; }
   .hero-mark { width:min(63%, 245px); }
-  .hero-vine { width:112px; right:0; bottom:0; }
   .section { padding:80px 0; }
   .about { padding:75px 0; }
   .about-mark { order:-1; }

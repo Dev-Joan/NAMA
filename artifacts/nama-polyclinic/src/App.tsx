@@ -213,10 +213,8 @@ const translations: Record<Locale, LocaleCopy> = {
       heading: ['Des personnes', 'avant des titres.'],
       copy: 'Chaque professionnel apporte son expertise, sa sensibilité et le temps nécessaire pour créer une relation de confiance.',
       members: [
-        { name: 'Dr. Maya Haddad', specialty: 'Psychologue clinicienne', bio: 'Écoute attentive et accompagnement émotionnel de l’enfant à l’adulte.' },
-        { name: 'M. Karim Khoury', specialty: 'Orthophoniste', bio: 'Langage, communication et apprentissages dans un cadre encourageant.' },
-        { name: 'Mme Lara Nassar', specialty: 'Psychomotricienne', bio: 'Le mouvement comme point de départ pour grandir et retrouver son équilibre.' },
-        { name: 'Mme Rita Saad', specialty: 'Diététicienne et nutrition', bio: 'Une approche simple, réaliste et personnalisée de la nutrition.' },
+        { name: 'Marie-Ange Abou Chrouche', specialty: 'Orthophoniste', bio: 'Langage, communication et apprentissages dans un cadre encourageant.' },
+        { name: 'Nour Asmar', specialty: 'Psychomotricienne', bio: 'Le mouvement comme point de départ pour grandir et retrouver son équilibre.' },
       ],
       photo: 'Photo à ajouter',
       portraitAlt: 'Portrait placeholder du membre de l’équipe',
@@ -365,10 +363,8 @@ const translations: Record<Locale, LocaleCopy> = {
       heading: ['People', 'before titles.'],
       copy: 'Every professional brings expertise, sensitivity and the time it takes to build a trusting relationship.',
       members: [
-        { name: 'Dr. Maya Haddad', specialty: 'Clinical psychologist', bio: 'Thoughtful listening and emotional support from childhood through adulthood.' },
-        { name: 'Mr. Karim Khoury', specialty: 'Speech therapist', bio: 'Language, communication and learning in an encouraging setting.' },
-        { name: 'Ms. Lara Nassar', specialty: 'Psychomotor therapist', bio: 'Movement as a starting point to grow and find balance again.' },
-        { name: 'Ms. Rita Saad', specialty: 'Dietitian and nutritionist', bio: 'A simple, realistic and personalized approach to nutrition.' },
+        { name: 'Marie-Ange Abou Chrouche', specialty: 'Speech therapist', bio: 'Language, communication and learning in an encouraging setting.' },
+        { name: 'Nour Asmar', specialty: 'Psychomotor therapist', bio: 'Movement as a starting point to grow and find balance again.' },
       ],
       photo: 'Photo coming soon',
       portraitAlt: 'Team member portrait placeholder',
@@ -517,10 +513,8 @@ const translations: Record<Locale, LocaleCopy> = {
       heading: ['أشخاص', 'قبل الألقاب.'],
       copy: 'يقدّم كل اختصاصي خبرته وحساسيته والوقت اللازم لبناء علاقة قائمة على الثقة.',
       members: [
-        { name: 'د. مايا حداد', specialty: 'اختصاصية في علم النفس العيادي', bio: 'إصغاء عميق ودعم عاطفي من الطفولة إلى البلوغ.' },
-        { name: 'السيد كريم خوري', specialty: 'اختصاصي في علاج النطق واللغة', bio: 'اللغة والتواصل والتعلّم ضمن بيئة مشجّعة.' },
-        { name: 'السيدة لارا نصار', specialty: 'اختصاصية في العلاج النفسي الحركي', bio: 'الحركة كنقطة انطلاق للنمو واستعادة التوازن.' },
-        { name: 'السيدة ريتا سعد', specialty: 'اختصاصية تغذية', bio: 'مقاربة بسيطة وواقعية وشخصية للتغذية.' },
+        { name: 'Marie-Ange Abou Chrouche', specialty: 'اختصاصية في علاج النطق واللغة', bio: 'اللغة والتواصل والتعلّم ضمن بيئة مشجّعة.' },
+        { name: 'Nour Asmar', specialty: 'اختصاصية في العلاج النفسي الحركي', bio: 'الحركة كنقطة انطلاق للنمو واستعادة التوازن.' },
       ],
       photo: 'ستُضاف الصورة قريباً',
       portraitAlt: 'صورة مؤقتة لأحد أعضاء الفريق',
@@ -789,10 +783,6 @@ function Home() {
              <div className="hero-visual reveal reveal-delay-2">
                <div className="hero-organic-art">
                  <img className="hero-mark" src={namaIcon} alt={copy.hero.markAlt} />
-                 <svg className="hero-vine" viewBox="0 0 180 150" fill="none" aria-hidden="true">
-                   <path d="M12 142c28-35 34-76 22-126M30 92c25-13 47-14 68-2M22 116c-12-8-18-18-20-31M81 90c19-17 42-22 69-15M99 82c2-18 11-31 27-42" />
-                   <path d="M26 57c10-11 19-15 30-15-5 11-14 17-30 15ZM65 92c7-13 17-19 29-20-3 13-12 21-29 20ZM136 41c8-9 17-12 26-11-4 10-12 14-26 11Z" />
-                 </svg>
                </div>
              </div>
           </div>
