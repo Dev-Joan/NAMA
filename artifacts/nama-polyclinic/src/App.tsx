@@ -21,8 +21,6 @@ import {
 } from 'lucide-react';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
-import namaLogo from '../../../.conversation/attached_assets/WhatsApp_Image_2026-09-01_at_12.16.19_1788299977736.jpeg';
-import extractedLogo from './assets/nama-logo.png';
 import topLogo from './assets/nama-top-logo.png';
 import namaIcon from './assets/nama-icon.png';
 import './index.css';
@@ -71,12 +69,12 @@ const specialties = [
 ];
 
 const faqs = [
-  ['Acceptez-vous les assurances ?', 'Les modalités de remboursement varient selon votre assurance et votre contrat. Notre équipe vous indiquera les documents généralement nécessaires et vous invitera à vérifier votre couverture auprès de votre assureur.'],
-  ['Ai-je besoin d’une prescription médicale ?', 'Une prescription n’est pas toujours nécessaire pour prendre un premier contact. Selon le motif de consultation et la spécialité, nous pourrons vous conseiller de demander l’avis de votre médecin.'],
-  ['Quels âges accompagnez-vous ?', 'NAMA accueille les enfants, les adolescents et les adultes. Nous prenons le temps d’orienter chaque personne vers le professionnel et le rythme qui lui correspondent.'],
+  ['Acceptez vous les assurances ?', 'Les modalités de remboursement varient selon votre assurance et votre contrat. Notre équipe vous indiquera les documents généralement nécessaires et vous invitera à vérifier votre couverture auprès de votre assureur.'],
+  ['Ai je besoin d’une prescription médicale ?', 'Une prescription n’est pas toujours nécessaire pour prendre un premier contact. Selon le motif de consultation et la spécialité, nous pourrons vous conseiller de demander l’avis de votre médecin.'],
+  ['Quels âges accompagnez vous ?', 'NAMA accueille les enfants, les adolescents et les adultes. Nous prenons le temps d’orienter chaque personne vers le professionnel et le rythme qui lui correspondent.'],
   ['Combien de temps dure une première séance ?', 'La première rencontre dure habituellement entre 45 et 60 minutes. Elle permet de faire connaissance, de comprendre votre demande et d’imaginer la suite ensemble.'],
-  ['Proposez-vous des séances en français, anglais ou arabe ?', 'Oui. Notre accueil est pensé pour être accessible en français, en anglais et en arabe. Indiquez votre préférence au moment de la prise de rendez-vous.'],
-  ['Quelle est votre politique d’annulation ?', 'Nous vous remercions de prévenir le cabinet au moins 24 heures à l’avance lorsque cela est possible. Contactez-nous directement afin de trouver un nouveau créneau.'],
+  ['Proposez vous des séances en français, anglais ou arabe ?', 'Oui. Notre accueil est pensé pour être accessible en français, en anglais et en arabe. Indiquez votre préférence au moment de la prise de rendez vous.'],
+  ['Quelle est votre politique d’annulation ?', 'Nous vous remercions de prévenir le cabinet au moins 24 heures à l’avance lorsque cela est possible. Contactez nous directement afin de trouver un nouveau créneau.'],
 ];
 
 function BrandMark({ className = '' }: { className?: string }) {
@@ -114,21 +112,6 @@ function Portrait({ index }: { index: number }) {
       <path d="M45 43c3 2 7 3 15 3s12-1 15-3M51 57c6 4 12 4 18 0" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
       {index === 1 && <path d="M38 35c4-16 38-22 45 1-8-7-15-10-25-8-6 1-13 3-20 7Z" fill="currentColor" opacity=".35" />}
       {index === 2 && <path d="M38 39c0-18 40-25 45 0-10-5-18-7-25-7-7 0-13 3-20 7Z" fill="currentColor" opacity=".3" />}
-    </svg>
-  );
-}
-
-function ClinicIllustration() {
-  return (
-    <svg className="clinic-illustration" viewBox="0 0 620 390" fill="none" role="img" aria-label="Illustration au trait de la clinique NAMA">
-      <path className="clinic-line clinic-line-draw" d="M76 317h469M103 317V142l206-96 210 96v175M103 142h416M309 46v-25" />
-      <path className="clinic-line clinic-line-draw" d="m82 143 227-111 231 111M254 317v-95h112v95M275 222h70v95M273 250h73M172 176h57v54h-57zM390 176h57v54h-57z" />
-      <path className="clinic-line clinic-line-draw" d="M190 176v54M418 176v54M201 176v54M429 176v54M171 200h58M389 200h58" />
-      <path className="clinic-line clinic-cross" d="M294 87h30M309 72v30" />
-      <path className="clinic-line clinic-detail" d="M132 317c10-28 16-40 29-53 13 13 19 25 29 53M454 317c9-23 14-32 25-43 11 11 16 20 24 43" />
-      <path className="clinic-line clinic-detail" d="M117 275c17-7 30-7 45 0M440 275c17-7 30-7 45 0" />
-      <circle className="clinic-dot" cx="122" cy="127" r="5" />
-      <circle className="clinic-dot clinic-dot-delay" cx="497" cy="127" r="5" />
     </svg>
   );
 }
@@ -188,7 +171,7 @@ function Home() {
       <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
         <div className="container nav-shell">
           <a href="#accueil" className="brand-lockup" onClick={closeMenu} data-testid="link-logo-home" aria-label="NAMA Polyclinic, retour à l'accueil">
-            <img src={topLogo} alt="NAMA Polyclinic — logo original" />
+              <img src={topLogo} alt="Logo original de NAMA Polyclinic" />
           </a>
           <nav className={`nav-links ${menuOpen ? 'open' : ''}`} aria-label="Navigation principale">
             {navItems.map(([label, href]) => (
@@ -197,7 +180,7 @@ function Home() {
           </nav>
           <div className="header-actions">
             <a className="phone-link" href="tel:+96178876825" data-testid="link-header-phone">78 87 68 25</a>
-            <a href="#contact" className="button button-primary" data-testid="button-header-book">Prendre rendez-vous <ArrowUpRight size={14} /></a>
+            <a href="#contact" className="button button-primary" data-testid="button-header-book">Prendre rendez vous <ArrowUpRight size={14} /></a>
             <button className="menu-button" type="button" onClick={() => setMenuOpen((value) => !value)} data-testid="button-mobile-menu" aria-expanded={menuOpen} aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}>
               {menuOpen ? <X size={23} /> : <Menu size={23} />}
             </button>
@@ -211,18 +194,23 @@ function Home() {
             <div className="reveal">
               <div className="eyebrow">Polyclinique médicale & paramédicale</div>
               <h1 className="display">Avancer,<br /><em>ensemble.</em></h1>
-              <p className="hero-lead">Un lieu doux et pluridisciplinaire à Jal El Dib, où chaque personne — enfant ou adulte — est accueillie avec attention.</p>
+               <p className="hero-lead">Un lieu doux et pluridisciplinaire à Jal El Dib, où chaque personne, enfant ou adulte, est accueillie avec attention.</p>
               <div className="hero-ctas">
-                <a className="button button-primary" href="#contact" data-testid="button-hero-book">Prendre rendez-vous <ArrowUpRight size={15} /></a>
+                <a className="button button-primary" href="#contact" data-testid="button-hero-book">Prendre rendez vous <ArrowUpRight size={15} /></a>
                 <a className="button button-outline" href="#services" data-testid="button-hero-services">Découvrir nos spécialités <ChevronRight size={15} /></a>
               </div>
               <div className="hero-note"><span><HeartHandshake size={16} /></span> Parce que chaque parcours compte.</div>
             </div>
-            <div className="hero-visual reveal reveal-delay-2">
-              <div className="hero-logo-medallion">
-                <img src={namaIcon} alt="Symbole NAMA représentant un adulte, un enfant et une pousse" />
-              </div>
-            </div>
+             <div className="hero-visual reveal reveal-delay-2">
+               <div className="hero-organic-art">
+                 <img className="hero-mark" src={namaIcon} alt="Symbole NAMA représentant un adulte, un enfant et une pousse" />
+                 <svg className="hero-vine" viewBox="0 0 180 150" fill="none" aria-hidden="true">
+                   <path d="M12 142c28-35 34-76 22-126M30 92c25-13 47-14 68-2M22 116c-12-8-18-18-20-31M81 90c19-17 42-22 69-15M99 82c2-18 11-31 27-42" />
+                   <path d="M26 57c10-11 19-15 30-15-5 11-14 17-30 15ZM65 92c7-13 17-19 29-20-3 13-12 21-29 20ZM136 41c8-9 17-12 26-11-4 10-12 14-26 11Z" />
+                 </svg>
+                 <div className="hero-organic-rule" />
+               </div>
+             </div>
           </div>
         </section>
 
@@ -234,12 +222,12 @@ function Home() {
             <div className="reveal reveal-delay-1">
               <div className="eyebrow">Pourquoi NAMA</div>
               <h2 className="display">Un même toit.<br />Plusieurs chemins.</h2>
-              <p className="about-copy">NAMA réunit des regards médicaux et paramédicaux pour prendre soin de la personne dans son ensemble. Ici, on commence par écouter — puis on construit un accompagnement qui a du sens pour vous, votre enfant, ou votre famille.</p>
+               <p className="about-copy">NAMA réunit des regards médicaux et paramédicaux pour prendre soin de la personne dans son ensemble. Ici, on commence par écouter, puis on construit un accompagnement qui a du sens pour vous, votre enfant ou votre famille.</p>
               <div className="trust-grid">
                 <div className="trust-item"><ShieldCheck size={19} /><strong>Équipe pluridisciplinaire</strong><span>Des compétences qui se répondent, au même endroit.</span></div>
                 <div className="trust-item"><HeartHandshake size={19} /><strong>Approche personnalisée</strong><span>Un bilan attentif avant chaque étape.</span></div>
                 <div className="trust-item"><Stethoscope size={19} /><strong>De l’enfant à l’adulte</strong><span>Un accompagnement qui évolue avec vous.</span></div>
-                <div className="trust-item"><Clock3 size={19} /><strong>Rendez-vous flexibles</strong><span>Des créneaux pensés pour la vraie vie.</span></div>
+                <div className="trust-item"><Clock3 size={19} /><strong>Rendez vous flexibles</strong><span>Des créneaux pensés pour la vraie vie.</span></div>
               </div>
             </div>
           </div>
@@ -250,7 +238,7 @@ function Home() {
             <div className="clinic-copy reveal">
               <div className="eyebrow">Le lieu NAMA</div>
               <h2 id="clinic-title">Un espace pour<br /><em>chaque étape.</em></h2>
-              <p>Un cabinet lumineux et accueillant, pensé pour que les enfants, les adultes et leurs proches se sentent à leur place dès le premier rendez-vous.</p>
+              <p>Un cabinet lumineux et accueillant, pensé pour que les enfants, les adultes et leurs proches se sentent à leur place dès le premier rendez vous.</p>
               <a href="#contact" className="mini-link" data-testid="link-clinic-contact">Découvrir NAMA <ArrowUpRight size={13} /></a>
             </div>
             <div className="clinic-visual reveal reveal-delay-1">
@@ -258,10 +246,6 @@ function Home() {
                 <div className="photo-slot-icon"><ImagePlus size={22} /></div>
                 <span>Photo du bâtiment</span>
                 <small>À ajouter prochainement</small>
-              </div>
-              <div className="clinic-drawing-wrap">
-                <ClinicIllustration />
-                <span className="clinic-caption">Un même toit · plusieurs chemins</span>
               </div>
             </div>
           </div>
@@ -275,7 +259,7 @@ function Home() {
                 <h2>Des expertises qui<br /><em>se complètent.</em></h2>
                 <p>Une porte d’entrée, puis le bon chemin. Nos professionnels travaillent avec précision, bienveillance et une vision commune du soin.</p>
               </div>
-              <div className="service-index">04 disciplines · 01 intention</div>
+               <div className="service-index">04 disciplines, 01 intention</div>
             </div>
             <div className="service-grid">
               {specialties.map((specialty, index) => (
@@ -302,9 +286,9 @@ function Home() {
             <div className="team-grid">
               {[
                 ['Dr. Maya Haddad', 'Psychologue clinicienne', 'Écoute attentive et accompagnement émotionnel de l’enfant à l’adulte.'],
-                ['M. Karim Khoury', 'Orthophoniste', 'Langage, communication et apprentissages dans un cadre encourageant.'],
+                 ['M. Karim Khoury', 'Orthophoniste', 'Langage, communication et apprentissages dans un cadre encourageant.'],
                 ['Mme Lara Nassar', 'Psychomotricienne', 'Le mouvement comme point de départ pour grandir et retrouver son équilibre.'],
-                ['Mme Rita Saad', 'Diététicienne-nutritionniste', 'Une approche simple, réaliste et personnalisée de la nutrition.'],
+                 ['Mme Rita Saad', 'Diététicienne et nutrition', 'Une approche simple, réaliste et personnalisée de la nutrition.'],
               ].map(([name, specialty, bio], index) => (
                 <article className={`person-card reveal reveal-delay-${(index % 3) + 1}`} key={name} data-testid={`card-practitioner-${index}`}>
                   <div className="person-portrait" data-testid={`photo-slot-practitioner-${index}`} aria-label={`Emplacement photo pour ${name}`}>
@@ -318,7 +302,7 @@ function Home() {
                 </article>
               ))}
             </div>
-            <div className="team-foot reveal"><span>La famille NAMA grandit avec les besoins de la communauté.</span><a href="#contact" className="mini-link" data-testid="link-team-contact">Vous êtes professionnel de santé ? <ArrowUpRight size={13} /></a></div>
+             <div className="team-foot reveal"><span>La famille NAMA grandit avec les besoins de la communauté.</span><a href="#contact" className="mini-link" data-testid="link-team-contact">Vous êtes un professionnel de santé ? <ArrowUpRight size={13} /></a></div>
           </div>
         </section>
 
@@ -331,10 +315,10 @@ function Home() {
             </div>
             <div className="steps-grid">
               {[
-                ['01', 'Prenez rendez-vous', 'Par téléphone, WhatsApp ou via le formulaire. Dites-nous simplement ce qui vous amène.'],
+                 ['01', 'Prenez rendez vous', 'Par téléphone, WhatsApp ou via le formulaire. Dites nous simplement ce qui vous amène.'],
                 ['02', 'Bilan initial', 'La première séance est un temps d’écoute et d’observation, sans jugement.'],
                 ['03', 'Plan personnalisé', 'Nous vous expliquons nos observations et proposons des étapes claires.'],
-                ['04', 'Suivi régulier', 'Nous avançons à votre rythme, avec des points de repère pour mesurer les progrès.'],
+                 ['04', 'Suivi régulier', 'Nous avançons à votre rythme, avec des points de repère pour mesurer les progrès.'],
               ].map(([number, title, text], index) => (
                 <div className={`step reveal reveal-delay-${(index % 3) + 1}`} key={number}><div className="step-number">{number}</div><h3>{title}</h3><p>{text}</p></div>
               ))}
@@ -350,9 +334,9 @@ function Home() {
             </div>
             <div className="testimonial-grid">
               {[
-                ['« À venir »', 'Cet espace accueillera bientôt les mots de familles accompagnées par NAMA.', 'Témoignage parent · bientôt disponible'],
-                ['« À venir »', 'Nous préparons une collection de témoignages sincères, avec l’accord de nos patients.', 'Témoignage patient · bientôt disponible'],
-                ['« À venir »', 'Votre expérience pourra aider une autre famille à faire son premier pas.', 'Témoignage famille · bientôt disponible'],
+                 ['« À venir »', 'Cet espace accueillera bientôt les mots de familles accompagnées par NAMA.', 'Témoignage parent, bientôt disponible'],
+                 ['« À venir »', 'Nous préparons une collection de témoignages sincères, avec l’accord de nos patients.', 'Témoignage patient, bientôt disponible'],
+                 ['« À venir »', 'Votre expérience pourra aider une autre famille à faire son premier pas.', 'Témoignage famille, bientôt disponible'],
               ].map(([quote, text, cite], index) => (
                 <article className={`quote-card reveal reveal-delay-${index + 1}`} key={cite} data-testid={`card-testimonial-${index}`}>
                   <div><span className="placeholder-label">Espace réservé</span><div className="quote-mark">“</div><blockquote>{quote}<br /><small>{text}</small></blockquote></div><cite>{cite}</cite>
@@ -381,7 +365,7 @@ function Home() {
             <div className="reveal">
               <div className="eyebrow">Parlons de la suite</div>
               <h2 className="display">Votre prochain<br />pas commence ici.</h2>
-              <p className="contact-intro">Expliquez-nous ce dont vous avez besoin. Nous vous recontacterons pour trouver le professionnel et le moment les plus adaptés.</p>
+              <p className="contact-intro">Expliquez nous ce dont vous avez besoin. Nous vous recontacterons pour trouver le professionnel et le moment les plus adaptés.</p>
               <div className="contact-details">
                 <div className="contact-detail"><Phone size={18} /><div><strong>Téléphone</strong><a href="tel:+96178876825" data-testid="link-contact-phone">78 87 68 25</a></div></div>
                 <div className="contact-detail"><MessageCircle size={18} /><div><strong>WhatsApp</strong><a href="https://wa.me/96178876825" target="_blank" rel="noreferrer" data-testid="link-contact-whatsapp">Écrire directement à l’équipe</a></div></div>
@@ -391,14 +375,14 @@ function Home() {
             </div>
             <div className="contact-form reveal reveal-delay-1">
               {submitted ? (
-                <div className="form-success" role="status" data-testid="status-form-success"><Check size={28} /><h3 className="display">Message bien reçu.</h3><p>Merci pour votre confiance. L’équipe NAMA vous répondra prochainement. Si votre demande est urgente, appelez-nous au <a href="tel:+96178876825">78 87 68 25</a>.</p><button type="button" className="button button-outline" onClick={() => setSubmitted(false)} data-testid="button-form-new">Envoyer un autre message</button></div>
+                <div className="form-success" role="status" data-testid="status-form-success"><Check size={28} /><h3 className="display">Message bien reçu.</h3><p>Merci pour votre confiance. L’équipe NAMA vous répondra prochainement. Si votre demande est urgente, appelez nous au <a href="tel:+96178876825">78 87 68 25</a>.</p><button type="button" className="button button-outline" onClick={() => setSubmitted(false)} data-testid="button-form-new">Envoyer un autre message</button></div>
               ) : (
                 <form onSubmit={submitForm} noValidate data-testid="form-contact">
                   <h3 className="display">Dites bonjour à NAMA.</h3>
                   <div className="form-grid">
                     <div className="field"><label htmlFor="name">Nom complet *</label><input id="name" name="name" type="text" autoComplete="name" placeholder="Votre nom" data-testid="input-name" required /></div>
                     <div className="field"><label htmlFor="phone">Téléphone *</label><input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="78 87 68 25" data-testid="input-phone" required /></div>
-                    <div className="field"><label htmlFor="email">E-mail *</label><input id="email" name="email" type="email" autoComplete="email" placeholder="vous@exemple.com" data-testid="input-email" required /></div>
+                     <div className="field"><label htmlFor="email">Courriel *</label><input id="email" name="email" type="email" autoComplete="email" placeholder="vous@exemple.com" data-testid="input-email" required /></div>
                     <div className="field"><label htmlFor="specialty">Je cherche *</label><select id="specialty" name="specialty" defaultValue="" data-testid="select-specialty" required><option value="" disabled>Choisir une spécialité</option><option>Orthophonie</option><option>Psychologie</option><option>Psychomotricité</option><option>Diététique / Nutrition</option><option>Je ne sais pas encore</option></select></div>
                     <div className="field full"><label htmlFor="message">Votre message</label><textarea id="message" name="message" placeholder="Quelques mots sur votre demande (facultatif)" data-testid="textarea-message" /></div>
                   </div>
@@ -413,7 +397,7 @@ function Home() {
         <section className="location" aria-label="Localisation et horaires">
           <div className="container location-grid">
             <iframe className="map-frame" title="Localisation de NAMA Polyclinic à Jal El Dib" src="https://www.google.com/maps?q=WH5P%2B62F%20Jal%20El%20Dib%20Lebanon&output=embed" loading="lazy" data-testid="map-location" />
-            <div className="hours-card reveal"><div className="eyebrow">Avant de venir</div><h3>On vous attend.</h3><div className="hours-row"><span>Lundi — Vendredi</span><span>08:00 — 18:00</span></div><div className="hours-row"><span>Samedi</span><span>09:00 — 14:00</span></div><div className="hours-row"><span>Dimanche</span><span>Fermé</span></div><a href="#contact" className="mini-link" data-testid="link-hours-book">Choisir un créneau <ArrowUpRight size={13} /></a></div>
+            <div className="hours-card reveal"><div className="eyebrow">Avant de venir</div><h3>On vous attend.</h3><div className="hours-row"><span>Du lundi au vendredi</span><span>08:00 à 18:00</span></div><div className="hours-row"><span>Samedi</span><span>09:00 à 14:00</span></div><div className="hours-row"><span>Dimanche</span><span>Fermé</span></div><a href="#contact" className="mini-link" data-testid="link-hours-book">Choisir un créneau <ArrowUpRight size={13} /></a></div>
           </div>
         </section>
       </main>
@@ -421,14 +405,14 @@ function Home() {
       <footer className="footer">
         <div className="container">
           <div className="footer-grid">
-            <div><img className="footer-logo" src={topLogo} alt="NAMA Polyclinic — logo original" /><p className="footer-copy">Une polyclinique médicale et paramédicale où chaque parcours est accueilli avec soin.</p></div>
+            <div><img className="footer-logo" src={topLogo} alt="Logo original de NAMA Polyclinic" /><p className="footer-copy">Une polyclinique médicale et paramédicale où chaque parcours est accueilli avec soin.</p></div>
             <div><h3>Explorer</h3><div className="footer-links">{navItems.slice(0, 5).map(([label, href]) => <a key={href} href={href} data-testid={`link-footer-${label.toLowerCase().replaceAll(' ', '-')}`}>{label}</a>)}</div></div>
             <div><h3>Nous trouver</h3><div className="footer-contact"><a href="tel:+96178876825" data-testid="link-footer-phone">78 87 68 25</a><a href="https://wa.me/96178876825" target="_blank" rel="noreferrer" data-testid="link-footer-whatsapp">WhatsApp</a><a href="https://www.instagram.com/namapolyclinic" target="_blank" rel="noreferrer" data-testid="link-footer-instagram">@namapolyclinic</a><span>WH5P+62F, Jal El Dib<br />Lebanon</span></div></div>
           </div>
-          <div className="footer-bottom"><span>© {new Date().getFullYear()} NAMA Polyclinic. Tous droits réservés.</span><span>Medical & paramedical care, with meaning.</span></div>
+          <div className="footer-bottom"><span>© {new Date().getFullYear()} NAMA Polyclinic. Tous droits réservés.</span><span>Medical and paramedical care, with meaning.</span></div>
         </div>
       </footer>
-      <a href="#contact" className="button button-primary mobile-book" data-testid="button-mobile-book"><MessageCircle size={17} /> Prendre rendez-vous</a>
+      <a href="#contact" className="button button-primary mobile-book" data-testid="button-mobile-book"><MessageCircle size={17} /> Prendre rendez vous</a>
     </div>
   );
 }
@@ -436,8 +420,8 @@ function Home() {
 function App() {
   useEffect(() => {
     document.documentElement.lang = 'fr';
-    document.title = 'NAMA Polyclinic | Polyclinique médicale à Jal El Dib';
-    const description = 'NAMA Polyclinic, polyclinique médicale et paramédicale à Jal El Dib : orthophoniste, psychologue, psychomotricienne et diététicienne.';
+    document.title = 'NAMA Polyclinic | Soins médicaux à Jal El Dib';
+    const description = 'NAMA Polyclinic, polyclinique médicale et paramédicale à Jal El Dib. Orthophonie, psychologie, psychomotricité et diététique.';
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement('meta');
@@ -451,7 +435,7 @@ function App() {
       keywords.setAttribute('name', 'keywords');
       document.head.appendChild(keywords);
     }
-    keywords.setAttribute('content', 'polyclinique Jal El Dib, orthophoniste, psychologue, psychomotricienne, diététicienne, nutrition, Lebanon');
+    keywords.setAttribute('content', 'polyclinique Jal El Dib, orthophonie, psychologie, psychomotricité, diététique, nutrition, Lebanon');
   }, []);
   return <QueryClientProvider client={queryClient}><TooltipProvider><Home /></TooltipProvider></QueryClientProvider>;
 }
