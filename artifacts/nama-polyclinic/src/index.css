@@ -120,7 +120,6 @@ h1,h2,h3 { font-weight:400; }
 .hero-mark { width:min(68%, 310px); height:auto; object-fit:contain; filter:drop-shadow(0 18px 14px rgba(107,78,51,.12)); animation:hero-mark-float 7s ease-in-out infinite; }
 .hero-vine { position:absolute; right:1%; bottom:4%; width:150px; color:var(--terracotta); opacity:.72; }
 .hero-vine path { stroke:currentColor; stroke-width:1.35; stroke-linecap:round; stroke-linejoin:round; }
-.hero-organic-rule { position:absolute; left:9%; bottom:1%; width:80px; height:1px; background:var(--terracotta); transform:rotate(-7deg); }
 
 .olive-band { background:var(--olive); color:var(--white); }
 .olive-band .eyebrow { color:var(--cream); }
