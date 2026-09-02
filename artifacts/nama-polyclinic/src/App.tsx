@@ -657,7 +657,7 @@ function Home() {
   const [locale, setLocale] = useState<Locale>(() => {
     if (typeof window === 'undefined') return 'fr';
     const queryLocale = new URLSearchParams(window.location.search).get('lang');
-    if (queryLocale === 'en' || queryLocale === 'ar') return queryLocale;
+    if (queryLocale === 'fr' || queryLocale === 'en' || queryLocale === 'ar') return queryLocale;
     const savedLocale = window.localStorage.getItem('nama-locale');
     return savedLocale === 'en' || savedLocale === 'ar' ? savedLocale : 'fr';
   });
@@ -708,6 +708,21 @@ function Home() {
     }, { threshold: 0.12 });
     root.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+    const target = document.getElementById(hash);
+    if (!target) return;
+    const headerOffset = window.innerWidth <= 760 ? 76 : 92;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+    const root = document.documentElement;
+    const previousScrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, Math.max(0, targetTop));
+    root.style.scrollBehavior = previousScrollBehavior;
+    target.querySelectorAll('.reveal').forEach((node) => node.classList.add('is-visible'));
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
@@ -876,11 +891,11 @@ function Home() {
           </div>
         </section>
 
-        <section id="parcours" className="section steps">
+        <section id="parcours" className="section steps" aria-labelledby="steps-title">
           <div className="container">
             <div className="section-heading reveal">
                <div className="eyebrow">{copy.steps.eyebrow}</div>
-               <h2>{copy.steps.heading[0]}<br />{copy.steps.heading[1]}</h2>
+               <h2 id="steps-title">{copy.steps.heading[0]}<br />{copy.steps.heading[1]}</h2>
                <p>{copy.steps.copy}</p>
             </div>
             <div className="steps-grid">
@@ -891,11 +906,11 @@ function Home() {
           </div>
         </section>
 
-        <section id="temoignages" className="section testimonials">
+        <section id="temoignages" className="section testimonials" aria-labelledby="testimonials-title">
           <div className="container">
             <div className="section-heading reveal">
                <div className="eyebrow">{copy.testimonials.eyebrow}</div>
-               <h2>{copy.testimonials.heading[0]}<br /><em>{copy.testimonials.heading[1]}</em></h2>
+               <h2 id="testimonials-title">{copy.testimonials.heading[0]}<br /><em>{copy.testimonials.heading[1]}</em></h2>
             </div>
             <div className="testimonial-grid">
                {copy.testimonials.cards.map(({ quote, text, cite }, index) => (

@@ -1,0 +1,1 @@
+- [React deep links](react-deep-links.md) — React-rendered hash targets need an immediate post-mount handoff; native hash restoration can run before the target exists.

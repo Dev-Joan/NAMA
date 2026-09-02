@@ -192,6 +192,7 @@ h1,h2,h3 { font-weight:400; }
 .person-bio { margin-top:10px; color:rgba(46,40,32,.67); font-size:13px; line-height:1.55; }
 .team-foot { display:flex; align-items:center; justify-content:space-between; gap:30px; margin-top:45px; padding:20px 0; border-top:1px solid rgba(117,116,90,.24); color:var(--bronze); font-size:13px; }
 
+.steps, .testimonials { scroll-margin-top:92px; }
 .steps { background:var(--terracotta); color:var(--white); }
 .steps .section-heading p { color:rgba(255,255,255,.8); }
 .steps-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:60px; border-top:1px solid rgba(255,255,255,.38); }
@@ -309,6 +310,7 @@ h1,h2,h3 { font-weight:400; }
   .hero-organic-art { min-height:300px; }
   .hero-mark { width:min(63%, 245px); }
   .section { padding:80px 0; }
+  .steps, .testimonials { scroll-margin-top:76px; }
   .about { padding:75px 0; }
   .about-mark { order:-1; }
   .about-mark svg { width:70%; }
