@@ -124,19 +124,18 @@ interface LocaleCopy {
     namePlaceholder: string;
     phoneLabel: string;
     phonePlaceholder: string;
-    email: string;
-    emailPlaceholder: string;
     specialty: string;
     specialtyPlaceholder: string;
     specialtyOptions: string[];
     message: string;
     messagePlaceholder: string;
     requiredError: string;
-    emailError: string;
     formNote: string;
+    whatsappMessageTitle: string;
     submit: string;
     successHeading: string;
     successCopy: string;
+    openWhatsApp: string;
     newMessage: string;
   };
   location: {
@@ -144,8 +143,6 @@ interface LocaleCopy {
     heading: string;
     weekdays: string;
     weekdayHours: string;
-    saturday: string;
-    saturdayHours: string;
     sunday: string;
     closed: string;
     link: string;
@@ -272,28 +269,25 @@ const translations: Record<Locale, LocaleCopy> = {
       namePlaceholder: 'Votre nom',
       phoneLabel: 'Téléphone *',
       phonePlaceholder: '78 87 68 25',
-      email: 'Courriel *',
-      emailPlaceholder: 'vous@exemple.com',
       specialty: 'Je cherche *',
       specialtyPlaceholder: 'Choisir une spécialité',
       specialtyOptions: ['Orthophonie', 'Psychologie', 'Psychomotricité', 'Diététique / Nutrition', 'Je ne sais pas encore'],
       message: 'Votre message',
       messagePlaceholder: 'Quelques mots sur votre demande (facultatif)',
       requiredError: 'Merci de compléter les champs obligatoires.',
-      emailError: 'Merci de vérifier votre adresse e-mail.',
-      formNote: 'Vos informations restent confidentielles.\nNous vous répondons dans les meilleurs délais.',
-      submit: 'Envoyer la demande',
-      successHeading: 'Message bien reçu.',
-      successCopy: 'Merci pour votre confiance. L’équipe NAMA vous répondra prochainement. Si votre demande est urgente, appelez nous au',
+      formNote: 'Votre demande s’ouvrira dans WhatsApp.\nAppuyez sur Envoyer pour la transmettre à NAMA.',
+      whatsappMessageTitle: 'Demande de rendez-vous — NAMA',
+      submit: 'Continuer sur WhatsApp',
+      successHeading: 'Votre demande est prête sur WhatsApp.',
+      successCopy: 'Le message est prérempli. Appuyez sur Envoyer dans WhatsApp pour transmettre votre demande à NAMA.',
+      openWhatsApp: 'Ouvrir WhatsApp',
       newMessage: 'Envoyer un autre message',
     },
     location: {
       eyebrow: 'Avant de venir',
       heading: 'On vous attend.',
-      weekdays: 'Du lundi au vendredi',
-      weekdayHours: '08:00 à 18:00',
-      saturday: 'Samedi',
-      saturdayHours: '09:00 à 14:00',
+      weekdays: 'Du lundi au samedi',
+      weekdayHours: '08:00 à 20:00',
       sunday: 'Dimanche',
       closed: 'Fermé',
       link: 'Choisir un créneau',
@@ -422,28 +416,25 @@ const translations: Record<Locale, LocaleCopy> = {
       namePlaceholder: 'Your name',
       phoneLabel: 'Phone *',
       phonePlaceholder: '78 87 68 25',
-      email: 'Email *',
-      emailPlaceholder: 'you@example.com',
       specialty: 'I am looking for *',
       specialtyPlaceholder: 'Choose a specialty',
       specialtyOptions: ['Speech therapy', 'Psychology', 'Psychomotor therapy', 'Dietetics / Nutrition', 'I am not sure yet'],
       message: 'Your message',
       messagePlaceholder: 'A few words about your request (optional)',
       requiredError: 'Please complete the required fields.',
-      emailError: 'Please check your email address.',
-      formNote: 'Your information stays confidential.\nWe will reply as soon as possible.',
-      submit: 'Send request',
-      successHeading: 'Message received.',
-      successCopy: 'Thank you for your trust. The NAMA team will get back to you soon. If your request is urgent, call us at',
+      formNote: 'Your request will open in WhatsApp.\nTap Send to deliver it to NAMA.',
+      whatsappMessageTitle: 'Appointment request — NAMA',
+      submit: 'Continue to WhatsApp',
+      successHeading: 'Your request is ready in WhatsApp.',
+      successCopy: 'The message is prefilled. Tap Send in WhatsApp to deliver your request to NAMA.',
+      openWhatsApp: 'Open WhatsApp',
       newMessage: 'Send another message',
     },
     location: {
       eyebrow: 'Before you visit',
       heading: 'We are here for you.',
-      weekdays: 'Monday to Friday',
-      weekdayHours: '08:00 to 18:00',
-      saturday: 'Saturday',
-      saturdayHours: '09:00 to 14:00',
+      weekdays: 'Monday to Saturday',
+      weekdayHours: '08:00 to 20:00',
       sunday: 'Sunday',
       closed: 'Closed',
       link: 'Choose a time',
@@ -572,28 +563,25 @@ const translations: Record<Locale, LocaleCopy> = {
       namePlaceholder: 'اسمكم',
       phoneLabel: 'الهاتف *',
       phonePlaceholder: '78 87 68 25',
-      email: 'البريد الإلكتروني *',
-      emailPlaceholder: 'you@example.com',
       specialty: 'أبحث عن *',
       specialtyPlaceholder: 'اختاروا اختصاصاً',
       specialtyOptions: ['علاج النطق واللغة', 'علم النفس', 'العلاج النفسي الحركي', 'التغذية / علم التغذية', 'لست متأكداً بعد'],
       message: 'رسالتكم',
       messagePlaceholder: 'بضع كلمات عن طلبكم (اختياري)',
       requiredError: 'يرجى إكمال الحقول المطلوبة.',
-      emailError: 'يرجى التحقق من عنوان البريد الإلكتروني.',
-      formNote: 'تبقى معلوماتكم سرية.\nسنردّ عليكم في أقرب وقت ممكن.',
-      submit: 'إرسال الطلب',
-      successHeading: 'وصلت رسالتكم.',
-      successCopy: 'شكراً لثقتكم. سيردّ عليكم فريق ناما قريباً. إذا كان طلبكم عاجلاً، اتصلوا بنا على الرقم',
+      formNote: 'سيتم فتح طلبكم في واتساب.\nاضغطوا على إرسال لإيصاله إلى ناما.',
+      whatsappMessageTitle: 'طلب موعد — ناما',
+      submit: 'المتابعة إلى واتساب',
+      successHeading: 'طلبكم جاهز في واتساب.',
+      successCopy: 'الرسالة مُعبأة مسبقاً. اضغطوا على إرسال في واتساب لإيصال طلبكم إلى ناما.',
+      openWhatsApp: 'فتح واتساب',
       newMessage: 'إرسال رسالة أخرى',
     },
     location: {
       eyebrow: 'قبل الزيارة',
       heading: 'نحن بانتظاركم.',
-      weekdays: 'من الإثنين إلى الجمعة',
-      weekdayHours: '08:00 حتى 18:00',
-      saturday: 'السبت',
-      saturdayHours: '09:00 حتى 14:00',
+      weekdays: 'من الإثنين إلى السبت',
+      weekdayHours: '08:00 حتى 20:00',
       sunday: 'الأحد',
       closed: 'مغلق',
       link: 'اختيار موعد',
@@ -665,6 +653,7 @@ function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formError, setFormError] = useState('');
+  const [whatsappUrl, setWhatsappUrl] = useState('');
   const [isLanguageSwitching, setIsLanguageSwitching] = useState(false);
   const revealRoot = useRef<HTMLDivElement>(null);
   const copy = translations[locale];
@@ -739,18 +728,24 @@ function Home() {
     const data = new FormData(form);
     const name = String(data.get('name') || '').trim();
     const phone = String(data.get('phone') || '').trim();
-    const email = String(data.get('email') || '').trim();
     const specialty = String(data.get('specialty') || '').trim();
-    if (!name || !phone || !email || !specialty) {
+    const message = String(data.get('message') || '').trim();
+    if (!name || !phone || !specialty) {
       setFormError(copy.contact.requiredError);
       return;
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setFormError(copy.contact.emailError);
-      return;
-    }
+    const whatsappMessage = [
+      copy.contact.whatsappMessageTitle,
+      `${copy.contact.name.replace(/\s*\*$/, '')}: ${name}`,
+      `${copy.contact.phoneLabel.replace(/\s*\*$/, '')}: ${phone}`,
+      `${copy.contact.specialty.replace(/\s*\*$/, '')}: ${specialty}`,
+      ...(message ? [`${copy.contact.message}: ${message}`] : []),
+    ].join('\n');
+    const nextWhatsAppUrl = `https://wa.me/96178876825?text=${encodeURIComponent(whatsappMessage)}`;
+    setWhatsappUrl(nextWhatsAppUrl);
     setSubmitted(true);
     form.reset();
+    window.open(nextWhatsAppUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -951,14 +946,13 @@ function Home() {
             </div>
             <div className="contact-form reveal reveal-delay-1">
               {submitted ? (
-                <div className="form-success" role="status" data-testid="status-form-success"><Check size={28} /><h3 className="display">{copy.contact.successHeading}</h3><p>{copy.contact.successCopy} <a href="tel:+96178876825">78 87 68 25</a>.</p><button type="button" className="button button-outline" onClick={() => setSubmitted(false)} data-testid="button-form-new">{copy.contact.newMessage}</button></div>
+                <div className="form-success" role="status" data-testid="status-form-success"><Check size={28} /><h3 className="display">{copy.contact.successHeading}</h3><p>{copy.contact.successCopy}</p><a href={whatsappUrl} target="_blank" rel="noreferrer" className="button button-primary" data-testid="link-form-open-whatsapp">{copy.contact.openWhatsApp} <MessageCircle size={14} /></a><button type="button" className="button button-outline" onClick={() => { setSubmitted(false); setWhatsappUrl(''); }} data-testid="button-form-new">{copy.contact.newMessage}</button></div>
               ) : (
                 <form onSubmit={submitForm} noValidate data-testid="form-contact">
                   <h3 className="display">{copy.contact.formHeading}</h3>
                   <div className="form-grid">
                     <div className="field"><label htmlFor="name">{copy.contact.name}</label><input id="name" name="name" type="text" autoComplete="name" placeholder={copy.contact.namePlaceholder} data-testid="input-name" required /></div>
                     <div className="field"><label htmlFor="phone">{copy.contact.phoneLabel}</label><input id="phone" name="phone" type="tel" autoComplete="tel" placeholder={copy.contact.phonePlaceholder} data-testid="input-phone" required /></div>
-                    <div className="field"><label htmlFor="email">{copy.contact.email}</label><input id="email" name="email" type="email" autoComplete="email" placeholder={copy.contact.emailPlaceholder} data-testid="input-email" required /></div>
                     <div className="field"><label htmlFor="specialty">{copy.contact.specialty}</label><select id="specialty" name="specialty" defaultValue="" data-testid="select-specialty" required><option value="" disabled>{copy.contact.specialtyPlaceholder}</option>{copy.contact.specialtyOptions.map((option) => <option key={option}>{option}</option>)}</select></div>
                     <div className="field full"><label htmlFor="message">{copy.contact.message}</label><textarea id="message" name="message" placeholder={copy.contact.messagePlaceholder} data-testid="textarea-message" /></div>
                   </div>
@@ -973,7 +967,7 @@ function Home() {
         <section className="location" aria-label={`${copy.contact.location} et horaires`}>
           <div className="container location-grid">
             <iframe className="map-frame" title={copy.contact.mapTitle} src="https://www.google.com/maps?q=WH5P%2B62F%20Jal%20El%20Dib%20Lebanon&output=embed" loading="lazy" data-testid="map-location" />
-            <div className="hours-card reveal"><div className="eyebrow">{copy.location.eyebrow}</div><h3>{copy.location.heading}</h3><div className="hours-row"><span>{copy.location.weekdays}</span><span>{copy.location.weekdayHours}</span></div><div className="hours-row"><span>{copy.location.saturday}</span><span>{copy.location.saturdayHours}</span></div><div className="hours-row"><span>{copy.location.sunday}</span><span>{copy.location.closed}</span></div><a href="#contact" className="mini-link" data-testid="link-hours-book">{copy.location.link} <ArrowUpRight size={13} /></a></div>
+            <div className="hours-card reveal"><div className="eyebrow">{copy.location.eyebrow}</div><h3>{copy.location.heading}</h3><div className="hours-row"><span>{copy.location.weekdays}</span><span>{copy.location.weekdayHours}</span></div><div className="hours-row"><span>{copy.location.sunday}</span><span>{copy.location.closed}</span></div><a href="#contact" className="mini-link" data-testid="link-hours-book">{copy.location.link} <ArrowUpRight size={13} /></a></div>
           </div>
         </section>
       </main>

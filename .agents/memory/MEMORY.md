@@ -1,1 +1,2 @@
 - [React deep links](react-deep-links.md) — React-rendered hash targets need an immediate post-mount handoff; native hash restoration can run before the target exists.
+- [NAMA contact and hours](nama-contact-hours.md) — Clinic hours and website appointment inquiries are Saturday-inclusive and WhatsApp-first.
