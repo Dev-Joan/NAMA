@@ -46,6 +46,9 @@ pnpm dev               # http://localhost:5173
    - `SITE_URL`: the public address, e.g. `https://www.namapolyclinic.com`
      (used for the canonical URL, the share image and `sitemap.xml`)
    - `PNPM_VERSION`: `12.10.1` (same pnpm as `packageManager` in `package.json`)
+   - `PREVIEW`: `true` during the review period, so search engines stay out
+     (noindex on every page, `robots.txt` disallows everything, no sitemap).
+     Delete it at launch and redeploy.
 4. Save and deploy. Every push to the main branch redeploys automatically.
 
 Node 22 is picked up from `.node-version`. The legal pages (`/confidentialite`,

@@ -4,10 +4,13 @@ import { defineConfig, loadEnv, type Plugin } from 'vite';
 
 // siteUrl: public address of the site, e.g. https://www.namapolyclinic.com. Used for the
 // canonical URL, social share image URLs, sitemap.xml and robots.txt.
-function siteMeta(siteUrl: string, port: number): Plugin {
+// preview: review period (PREVIEW=true) - search engines are asked not to index anything.
+function siteMeta(siteUrl: string, port: number, preview: boolean): Plugin {
   const pageUrl = (origin: string) => `${origin}/`;
   const robots = (origin: string) =>
-    `User-agent: *\nAllow: /\n${origin ? `\nSitemap: ${pageUrl(origin)}sitemap.xml\n` : ''}`;
+    preview
+      ? 'User-agent: *\nDisallow: /\n'
+      : `User-agent: *\nAllow: /\n${origin ? `\nSitemap: ${pageUrl(origin)}sitemap.xml\n` : ''}`;
   // Keep in sync with the legal page slugs in src/site.ts.
   const sitemapPaths = ['', 'confidentialite', 'mentions-legales'];
   const sitemap = (origin: string) =>
@@ -19,6 +22,7 @@ function siteMeta(siteUrl: string, port: number): Plugin {
   return {
     name: 'nama-site-meta',
     configResolved(config) {
+      if (preview) config.logger.info('PREVIEW=true: pages are marked noindex, nofollow and robots.txt disallows everything.');
       if (!siteUrl && config.command === 'build') {
         config.logger.info('SITE_URL is not set: canonical URL and sitemap.xml are left out, and share images use relative URLs.');
       }
@@ -36,6 +40,7 @@ function siteMeta(siteUrl: string, port: number): Plugin {
     transformIndexHtml: {
       order: 'pre',
       handler(html) {
+        if (preview) html = html.replace(/<meta name="robots" content="[^"]*"/, '<meta name="robots" content="noindex, nofollow"');
         if (origin) return html.replaceAll('__SITE_URL__', pageUrl(origin));
         // Without a site URL, drop canonical/og:url and keep share images relative.
         return html
@@ -45,7 +50,7 @@ function siteMeta(siteUrl: string, port: number): Plugin {
     },
     generateBundle() {
       this.emitFile({ type: 'asset', fileName: 'robots.txt', source: robots(siteUrl) });
-      if (siteUrl) this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap(siteUrl) });
+      if (siteUrl && !preview) this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap(siteUrl) });
     },
   };
 }
@@ -55,12 +60,13 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   const port = Number(env.PORT || 5173);
   const siteUrl = (env.SITE_URL ?? '').replace(/\/+$/, '');
+  const preview = env.PREVIEW === 'true';
   if (siteUrl && !/^https?:\/\//.test(siteUrl)) {
     throw new Error(`Invalid SITE_URL value: "${siteUrl}" (must start with https://)`);
   }
 
   return {
-    plugins: [react(), tailwindcss(), siteMeta(siteUrl, port)],
+    plugins: [react(), tailwindcss(), siteMeta(siteUrl, port, preview)],
     build: {
       // Browsers from roughly the last four years, including iOS 15.4+ Safari and
       // Samsung Internet 18+ (also the floor for the CSS cascade layers Tailwind uses).
