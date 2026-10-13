@@ -39,10 +39,10 @@ Use only one file per person.
 ## Adding a photo
 
 1. Rename the photo as shown above.
-2. Drag it into this folder: `artifacts/nama-polyclinic/src/assets/team/`.
+2. Drag it into this folder: `src/assets/team/`.
 3. If the website is running locally, it updates by itself. Check the
    "Notre équipe" section at http://localhost:5173/#equipe.
-4. To put it online, commit the file and redeploy on Replit.
+4. To put it online, commit and push: Cloudflare Pages rebuilds the site automatically.
 
 ## Adjusting the crop
 

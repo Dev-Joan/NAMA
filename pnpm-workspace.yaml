@@ -5,6 +5,6 @@
 # usually spotted and pulled within hours. Do not lower or remove this.
 minimumReleaseAge: 1440
 
-# Packages whose install scripts may run (esbuild ships its binary this way).
-onlyBuiltDependencies:
-  - esbuild
+# Packages allowed to run install scripts (esbuild checks its native binary).
+allowBuilds:
+  esbuild: true

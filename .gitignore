@@ -1,5 +1,10 @@
 # Build output
 dist
+
+# Device test output (pnpm test:devices)
+test-results
+playwright-report
+screenshots
 *.tsbuildinfo
 
 # Dependencies

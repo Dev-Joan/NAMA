@@ -1287,12 +1287,16 @@ function Home() {
     }
     setFormStatus('sending');
     setFailedRequest(null);
+    // Give up after 15 s. (AbortController + setTimeout rather than AbortSignal.timeout,
+    // which iOS Safari only supports from version 16.)
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 15000);
     try {
       if (!WEB3FORMS_KEY) throw new Error('VITE_WEB3FORMS_KEY is not set, so the form cannot send email.');
       const response = await fetch(WEB3FORMS_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        signal: AbortSignal.timeout(15000),
+        signal: controller.signal,
         // Field names are in French: they label the email the clinic receives.
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
@@ -1310,10 +1314,11 @@ function Home() {
       if (!response.ok || !result.success) throw new Error(result.message || `Web3Forms returned ${response.status}`);
       form.reset();
       setFormStatus('sent');
-    } catch (error) {
-      console.error('Contact form could not be sent:', error);
+    } catch {
       setFailedRequest(values);
       setFormStatus('error');
+    } finally {
+      window.clearTimeout(timeout);
     }
   };
   const requestWhatsappLink = (values: Record<FormField, string>) => whatsappLink([
