@@ -42,7 +42,7 @@ Use only one file per person.
 2. Drag it into this folder: `src/assets/team/`.
 3. If the website is running locally, it updates by itself. Check the
    "Notre équipe" section at http://localhost:5173/#equipe.
-4. To put it online, commit and push: Cloudflare Pages rebuilds the site automatically.
+4. To put it online, commit and push: Cloudflare rebuilds the site automatically.
 
 ## Adjusting the crop
 

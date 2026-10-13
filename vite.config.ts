@@ -56,7 +56,7 @@ function siteMeta(siteUrl: string, port: number, preview: boolean): Plugin {
 }
 
 export default defineConfig(({ mode }) => {
-  // Reads .env as well as real environment variables (Cloudflare Pages settings).
+  // Reads .env as well as real environment variables (Cloudflare build variables).
   const env = loadEnv(mode, process.cwd(), '');
   const port = Number(env.PORT || 5173);
   const siteUrl = (env.SITE_URL ?? '').replace(/\/+$/, '');

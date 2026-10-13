@@ -45,7 +45,7 @@ export default defineConfig({
   reporter: [['list'], ['json', { outputFile: 'test-results/results.json' }]],
   use: { baseURL: 'http://localhost:4173', locale: 'fr-FR' },
   projects,
-  // Test the production build, as Cloudflare Pages will serve it.
+  // Test the production build, as Cloudflare will serve it.
   webServer: {
     command: 'pnpm build && pnpm preview --port 4173 --strictPort',
     url: 'http://localhost:4173',

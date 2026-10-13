@@ -109,7 +109,7 @@ const legalCopy: Record<Locale, LegalCopy> = {
               'Votre choix de langue est enregistré dans votre navigateur pour être retenu à votre prochaine visite. Il ne nous est pas transmis.',
               'La carte est fournie par Google Maps. En l’affichant, votre navigateur se connecte à Google, qui peut collecter des données selon sa propre politique de confidentialité.',
               'Les polices de caractères sont chargées depuis Google Fonts, ce qui transmet votre adresse IP à Google.',
-              'L’hébergeur du site peut enregistrer des données techniques, comme votre adresse IP et les pages consultées, pour faire fonctionner et sécuriser le site. L’hébergeur est Cloudflare (Cloudflare Pages).',
+              'L’hébergeur du site peut enregistrer des données techniques, comme votre adresse IP et les pages consultées, pour faire fonctionner et sécuriser le site. L’hébergeur est Cloudflare (Cloudflare Workers).',
               'Le site n’utilise aucun outil de statistiques ni de publicité.',
             ],
           },
@@ -139,7 +139,7 @@ const legalCopy: Record<Locale, LegalCopy> = {
           },
           {
             heading: 'Hébergement',
-            paragraphs: ['Le site est hébergé par Cloudflare, Inc. (Cloudflare Pages), 101 Townsend St, San Francisco, CA 94107, États-Unis – www.cloudflare.com.'],
+            paragraphs: ['Le site est hébergé par Cloudflare, Inc. (Cloudflare Workers), 101 Townsend St, San Francisco, CA 94107, États-Unis – www.cloudflare.com.'],
           },
           {
             heading: 'Professionnels de santé',
@@ -248,7 +248,7 @@ const legalCopy: Record<Locale, LegalCopy> = {
               'Your language choice is saved in your browser so it is remembered on your next visit. It is not sent to us.',
               'The map is provided by Google Maps. When it is displayed, your browser connects to Google, which may collect data under its own privacy policy.',
               'Fonts are loaded from Google Fonts, which sends your IP address to Google.',
-              'The website host may record technical data, such as your IP address and the pages you visit, to run and secure the website. The host is Cloudflare (Cloudflare Pages).',
+              'The website host may record technical data, such as your IP address and the pages you visit, to run and secure the website. The host is Cloudflare (Cloudflare Workers).',
               'The website does not use any analytics or advertising tools.',
             ],
           },
@@ -278,7 +278,7 @@ const legalCopy: Record<Locale, LegalCopy> = {
           },
           {
             heading: 'Hosting',
-            paragraphs: ['The website is hosted by Cloudflare, Inc. (Cloudflare Pages), 101 Townsend St, San Francisco, CA 94107, United States – www.cloudflare.com.'],
+            paragraphs: ['The website is hosted by Cloudflare, Inc. (Cloudflare Workers), 101 Townsend St, San Francisco, CA 94107, United States – www.cloudflare.com.'],
           },
           {
             heading: 'Healthcare professionals',
@@ -387,7 +387,7 @@ const legalCopy: Record<Locale, LegalCopy> = {
               'يُحفَظ اختياركم للغة في متصفحكم ليتذكّره الموقع في زيارتكم المقبلة، ولا يُرسَل إلينا.',
               'تُعرَض الخريطة عبر خرائط Google. عند عرضها، يتصل متصفحكم بشركة Google التي قد تجمع بيانات وفق سياسة الخصوصية الخاصة بها.',
               'تُحمَّل الخطوط من Google Fonts، ما يرسل عنوان IP الخاص بكم إلى Google.',
-              'قد تسجّل الجهة المستضيفة للموقع بيانات تقنية، مثل عنوان IP والصفحات التي تزورونها، لتشغيل الموقع وحمايته. الجهة المستضيفة هي Cloudflare (Cloudflare Pages).',
+              'قد تسجّل الجهة المستضيفة للموقع بيانات تقنية، مثل عنوان IP والصفحات التي تزورونها، لتشغيل الموقع وحمايته. الجهة المستضيفة هي Cloudflare (Cloudflare Workers).',
               'لا يستخدم الموقع أي أدوات إحصاء أو إعلان.',
             ],
           },
@@ -417,7 +417,7 @@ const legalCopy: Record<Locale, LegalCopy> = {
           },
           {
             heading: 'الاستضافة',
-            paragraphs: ['يستضيف الموقعَ Cloudflare, Inc. (Cloudflare Pages)، 101 Townsend St, San Francisco, CA 94107، الولايات المتحدة – www.cloudflare.com.'],
+            paragraphs: ['يستضيف الموقعَ Cloudflare, Inc. (Cloudflare Workers)، 101 Townsend St, San Francisco, CA 94107، الولايات المتحدة – www.cloudflare.com.'],
           },
           {
             heading: 'الاختصاصيون الصحيون',

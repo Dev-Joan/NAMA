@@ -32,16 +32,20 @@ pnpm dev               # http://localhost:5173
 | Team photos (how to add someone)       | `src/assets/team/` (see its README)|
 | Icons, share image, redirects          | `public/`                          |
 
-## Deploy on Cloudflare Pages
+## Deploy on Cloudflare Workers
 
-1. In the Cloudflare dashboard: **Workers & Pages → Create → Pages → Connect to Git**,
+The site is served as static files by a Cloudflare Worker with no script:
+`wrangler.jsonc` points it at the built `dist/` folder. Any path that is not a
+file (such as `/confidentialite` or `/mentions-legales`) gets `index.html`, so
+those pages work when opened directly or refreshed.
+
+1. In the Cloudflare dashboard: **Workers & Pages → Create → Import a repository**,
    and pick this repository.
 2. Build settings:
-   - Framework preset: **None** (or Vite)
    - Build command: `pnpm build`
-   - Build output directory: `dist`
+   - Deploy command: `npx wrangler deploy`
    - Root directory: leave empty
-3. Under **Settings → Variables and Secrets**, add for Production (and Preview):
+3. Under **Settings → Build → Variables and secrets** (build variables), add:
    - `VITE_WEB3FORMS_KEY`: the Web3Forms access key
    - `SITE_URL`: the public address, e.g. `https://www.namapolyclinic.com`
      (used for the canonical URL, the share image and `sitemap.xml`)
@@ -51,9 +55,8 @@ pnpm dev               # http://localhost:5173
      Delete it at launch and redeploy.
 4. Save and deploy. Every push to the main branch redeploys automatically.
 
-Node 22 is picked up from `.node-version`. The legal pages (`/confidentialite`,
-`/mentions-legales`) are served by the same page through `public/_redirects`, so
-they work when opened directly or refreshed.
+These are read when the site is built, so changing one needs a new deploy.
+Node 22 is picked up from `.node-version`.
 
 After the first deploy, send one test message from the contact form and check
 that it arrives at namapolyclinic@gmail.com (look in spam the first time).

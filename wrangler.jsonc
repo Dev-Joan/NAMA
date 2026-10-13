@@ -1,0 +1,11 @@
+// Cloudflare Workers: serve the built static site from ./dist. No Worker script.
+// Build with `pnpm build`, deploy with `npx wrangler deploy`.
+{
+  "name": "namapolyclinic",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./dist",
+    // Any path that is not a file (e.g. /confidentialite, /mentions-legales) gets index.html.
+    "not_found_handling": "single-page-application"
+  }
+}
