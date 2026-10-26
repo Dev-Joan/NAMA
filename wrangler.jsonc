@@ -3,6 +3,12 @@
 {
   "name": "namapolyclinic",
   "compatibility_date": "2025-09-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "namapolyclinic.com", "custom_domain": true },
+    { "pattern": "www.namapolyclinic.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./dist",
     // Any path that is not a file (e.g. /confidentialite, /mentions-legales) gets index.html.
