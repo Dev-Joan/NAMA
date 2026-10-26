@@ -26,7 +26,8 @@ import namaIcon from './assets/nama-icon.png';
 import './index.css';
 import { ClinicCarousel, type ClinicCarouselCopy } from './components/clinic-carousel';
 import { LegalPage } from './legal';
-import { CLINIC_PHONE, legalHref, legalPageFromLocation, locales, phoneText, useLocale, whatsappLink, withPhone, type Locale } from './site';
+import { pageMeta } from './clinic';
+import { CLINIC_INSTAGRAM, CLINIC_MAP, CLINIC_PHONE, legalHref, legalPageFromLocation, locales, phoneText, useLocale, whatsappLink, withPhone, type Locale } from './site';
 
 type NavKey = 'home' | 'about' | 'services' | 'team' | 'visit' | 'testimonials' | 'faq' | 'contact';
 type SpecialtyKey = 'speech' | 'mind' | 'motion' | 'leaf' | 'physio' | 'nlp' | 'psychiatry' | 'education';
@@ -252,7 +253,6 @@ interface LocaleCopy {
     privacy: string;
     legal: string;
   };
-  meta: { title: string; description: string; keywords: string };
 }
 
 const translations: Record<Locale, LocaleCopy> = {
@@ -263,7 +263,7 @@ const translations: Record<Locale, LocaleCopy> = {
     hero: {
       eyebrow: 'Polyclinique médicale & paramédicale',
       heading: ['Parce que chaque parcours', 'compte.'],
-      lead: 'Un lieu doux et pluridisciplinaire à Jal El Dib, où chaque personne, enfant ou adulte, est accueillie avec attention.',
+      lead: 'Un lieu doux et pluridisciplinaire à Jal El Dib, dans le Metn, à quelques minutes de Beyrouth. Chaque personne, enfant ou adulte, y est accueillie avec attention.',
       book: 'Prendre rendez vous',
       services: 'Découvrir nos spécialités',
       note: 'Avancer, ensemble.',
@@ -272,7 +272,7 @@ const translations: Record<Locale, LocaleCopy> = {
     about: {
       eyebrow: 'Pourquoi NAMA',
       heading: ['Un même toit.', 'Plusieurs chemins.'],
-      copy: 'NAMA réunit des regards médicaux et paramédicaux pour prendre soin de la personne dans son ensemble. Ici, on commence par écouter, puis on construit un accompagnement qui a du sens pour vous, votre enfant ou votre famille.',
+      copy: 'À Jal El Dib, NAMA réunit des regards médicaux et paramédicaux pour prendre soin de la personne dans son ensemble. Ici, on commence par écouter, puis on construit un accompagnement qui a du sens pour vous, votre enfant ou votre famille.',
       markAlt: 'Symbole NAMA : un adulte et un enfant autour d’une pousse',
       trust: [
         { title: 'Équipe pluridisciplinaire', description: 'Des compétences qui se répondent, au même endroit.' },
@@ -284,7 +284,7 @@ const translations: Record<Locale, LocaleCopy> = {
     clinic: {
       eyebrow: 'Le lieu NAMA',
       heading: ['Un espace pour', 'chaque étape.'],
-      copy: 'Un cabinet lumineux et accueillant, pensé pour que les enfants, les adultes et leurs proches se sentent à leur place dès le premier rendez vous.',
+      copy: 'Un cabinet lumineux et accueillant à Jal El Dib, pensé pour que les enfants, les adultes et leurs proches se sentent à leur place dès le premier rendez vous.',
       link: 'Découvrir NAMA',
       carousel: {
         label: 'Photos du lieu NAMA',
@@ -295,24 +295,24 @@ const translations: Record<Locale, LocaleCopy> = {
         photos: {
           wall: 'Mur d’accueil vert avec la phrase « Because every journey matters »',
           door: 'Entrée d’une salle de consultation, porte vitrée NAMA et affiche « Don’t overthink it »',
-          salon: 'Salle d’attente lumineuse avec canapé, fauteuils et logo NAMA au mur',
+          salon: 'Salle d’attente lumineuse de NAMA Polyclinic à Jal El Dib, avec canapé, fauteuils et logo NAMA au mur',
           psy: 'Bureau de psychologie avec canapé, bureau en bois et chaises claires',
           ortho: 'Salle d’orthophonie pour enfants avec étagères de jeux, petite table et tapis rond',
         },
       },
     },
     services: {
-      eyebrow: 'Nos spécialités',
+      eyebrow: 'Nos spécialités à Jal El Dib',
       heading: ['Des expertises qui', 'se complètent.'],
       copy: 'Une porte d’entrée, puis le bon chemin. Nos professionnels travaillent avec précision, bienveillance et une vision commune du soin.',
       index: '08 disciplines, 01 intention',
       nutritionSuffix: '/ Nutrition',
       specialties: {
-        speech: { title: 'Orthophonie', description: 'Accompagner la parole, le langage et la déglutition, à chaque âge. Un espace pour retrouver confiance dans sa voix et ses échanges.', detail: 'Articulation, retard de langage, bégaiement, troubles de la communication et de la déglutition.' },
-        mind: { title: 'Psychologie', description: 'Écouter ce qui se vit, mettre des mots sur ce qui pèse et avancer avec un accompagnement ajusté aux enfants comme aux adultes.', detail: 'Soutien émotionnel, thérapie individuelle, difficultés comportementales et accompagnement familial.' },
+        speech: { title: 'Orthophonie', description: 'Nos orthophonistes accompagnent la parole, le langage et la déglutition, à chaque âge. Un espace pour retrouver confiance dans sa voix et ses échanges.', detail: 'Articulation, retard de langage, bégaiement, troubles de la communication et de la déglutition.' },
+        mind: { title: 'Psychologie', description: 'Nos psychologues cliniciennes écoutent ce qui se vit, aident à mettre des mots sur ce qui pèse et proposent un accompagnement ajusté aux enfants comme aux adultes.', detail: 'Soutien émotionnel, thérapie individuelle, difficultés comportementales et accompagnement familial.' },
         motion: { title: 'Psychomotricité', description: 'Faire grandir la coordination, l’équilibre et le lien entre le corps et les émotions, principalement chez l’enfant.', detail: 'Développement moteur, intégration sensorielle, graphomotricité et rééducation adaptée.' },
-        leaf: { title: 'Diététique', description: 'Une nutrition concrète, personnalisée et sans jugement pour prendre soin de soi et de sa famille au quotidien.', detail: 'Plans alimentaires, gestion du poids, régimes thérapeutiques et conseils en nutrition familiale.' },
-        physio: { title: 'Physiothérapie', description: 'Retrouver mobilité, force et confort après une blessure, une opération ou face à la douleur, avec des exercices adaptés à chaque âge.', detail: 'Rééducation, douleurs musculaires et articulaires, mal de dos, récupération après chirurgie et prévention.' },
+        leaf: { title: 'Diététique', description: 'Notre diététicienne propose une nutrition concrète, personnalisée et sans jugement pour prendre soin de soi et de sa famille au quotidien.', detail: 'Plans alimentaires, gestion du poids, régimes thérapeutiques et conseils en nutrition familiale.' },
+        physio: { title: 'Physiothérapie', description: 'Notre physiothérapeute vous aide à retrouver mobilité, force et confort après une blessure, une opération ou face à la douleur, avec des exercices adaptés à chaque âge.', detail: 'Rééducation, douleurs musculaires et articulaires, mal de dos, récupération après chirurgie et prévention.' },
         nlp: { title: 'PNL', description: 'La programmation neuro-linguistique : une approche de coaching et d’accompagnement thérapeutique qui travaille sur le lien entre pensées, langage et comportements, pour changer ses habitudes, mieux gérer le stress et prendre confiance en soi.', detail: 'Changement d’habitudes, gestion du stress, confiance en soi, objectifs personnels et coaching.' },
         psychiatry: { title: 'Psychiatrie', description: 'Diagnostiquer, traiter et prévenir les troubles de santé mentale grâce à un suivi médical, avec une prise en charge médicamenteuse lorsque c’est nécessaire.', detail: 'Évaluation psychiatrique, diagnostic, suivi du traitement et gestion des médicaments.' },
         education: { title: 'Éducation spécialisée', description: 'Un enseignement et un accompagnement sur mesure pour les enfants ayant des difficultés d’apprentissage, un retard de développement ou un handicap, au rythme et selon les besoins de chacun.', detail: 'Difficultés d’apprentissage, retards de développement, projets éducatifs individualisés et soutien scolaire.' },
@@ -455,6 +455,7 @@ const translations: Record<Locale, LocaleCopy> = {
         { question: 'Acceptez vous les assurances ?', answer: 'Les modalités de remboursement varient selon votre assurance et votre contrat. Notre équipe vous indiquera les documents généralement nécessaires et vous invitera à vérifier votre couverture auprès de votre assureur.' },
         { question: 'Ai je besoin d’une prescription médicale ?', answer: 'Une prescription n’est pas toujours nécessaire pour prendre un premier contact. Selon le motif de consultation et la spécialité, nous pourrons vous conseiller de demander l’avis de votre médecin.' },
         { question: 'Quels âges accompagnez vous ?', answer: 'NAMA accueille les enfants, les adolescents et les adultes. Nous prenons le temps d’orienter chaque personne vers le professionnel et le rythme qui lui correspondent.' },
+        { question: 'Où se trouve NAMA Polyclinic ?', answer: 'À Jal El Dib, dans le Metn, à quelques minutes de Beyrouth. Le plan et l’itinéraire se trouvent en bas de cette page.' },
         { question: 'Combien de temps dure une première séance ?', answer: 'La première rencontre dure habituellement entre 45 et 60 minutes. Elle permet de faire connaissance, de comprendre votre demande et d’imaginer la suite ensemble.' },
         { question: 'Proposez vous des séances en français, anglais ou arabe ?', answer: 'Oui. Notre accueil est pensé pour être accessible en français, en anglais et en arabe. Indiquez votre préférence au moment de la prise de rendez vous.' },
         { question: 'Quelle est votre politique d’annulation ?', answer: 'Nous vous remercions de prévenir le cabinet au moins 24 heures à l’avance lorsque cela est possible. Contactez nous directement afin de trouver un nouveau créneau.' },
@@ -467,7 +468,7 @@ const translations: Record<Locale, LocaleCopy> = {
       phone: 'Téléphone',
       whatsapp: 'Écrire directement à l’équipe',
       location: 'Nous trouver',
-      address: ['WH5P+62F, Jal El Dib', 'Liban'],
+      address: ['WH5P+62F, Jal El Dib', 'Metn, Liban'],
       instagramAria: 'Instagram de NAMA Polyclinic',
       whatsappAria: 'WhatsApp de NAMA Polyclinic',
       directionsAria: 'Itinéraire vers NAMA Polyclinic',
@@ -509,7 +510,7 @@ const translations: Record<Locale, LocaleCopy> = {
     },
     location: {
       eyebrow: 'Avant de venir',
-      heading: 'On vous attend.',
+      heading: 'On vous attend à Jal El Dib.',
       weekdays: 'Du lundi au samedi',
       weekdayHours: '08:00 à 20:00',
       sunday: 'Dimanche',
@@ -527,11 +528,6 @@ const translations: Record<Locale, LocaleCopy> = {
       privacy: 'Confidentialité',
       legal: 'Mentions légales',
     },
-    meta: {
-      title: 'NAMA Polyclinic | Soins médicaux à Jal El Dib',
-      description: 'NAMA Polyclinic, polyclinique médicale et paramédicale à Jal El Dib. Orthophonie, psychologie, psychomotricité, diététique et physiothérapie.',
-      keywords: 'polyclinique Jal El Dib, orthophonie, psychologie, psychomotricité, diététique, nutrition, physiothérapie, Liban',
-    },
   },
   en: {
     languageLabel: 'Website language',
@@ -540,7 +536,7 @@ const translations: Record<Locale, LocaleCopy> = {
     hero: {
       eyebrow: 'Medical & paramedical clinic',
       heading: ['Because every journey', 'matters.'],
-      lead: 'A warm, multidisciplinary place in Jal El Dib, where every person, child or adult, is welcomed with care.',
+      lead: 'A warm, multidisciplinary place in Jal El Dib, Metn, just minutes from Beirut, where every person, child or adult, is welcomed with care.',
       book: 'Book an appointment',
       services: 'Discover our specialties',
       note: 'Moving forward, together.',
@@ -549,7 +545,7 @@ const translations: Record<Locale, LocaleCopy> = {
     about: {
       eyebrow: 'Why NAMA',
       heading: ['One roof.', 'Many paths.'],
-      copy: 'NAMA brings medical and paramedical perspectives together to care for the whole person. We start by listening, then build meaningful support for you, your child or your family.',
+      copy: 'In Jal El Dib, NAMA brings medical and paramedical perspectives together to care for the whole person. We start by listening, then build meaningful support for you, your child or your family.',
       markAlt: 'NAMA symbol: an adult and a child gathered around a growing plant',
       trust: [
         { title: 'Multidisciplinary team', description: 'Connected expertise, all in one place.' },
@@ -561,7 +557,7 @@ const translations: Record<Locale, LocaleCopy> = {
     clinic: {
       eyebrow: 'The NAMA space',
       heading: ['A place for', 'every step.'],
-      copy: 'A bright, welcoming clinic designed so children, adults and their loved ones feel at home from their very first appointment.',
+      copy: 'A bright, welcoming clinic in Jal El Dib, designed so children, adults and their loved ones feel at home from their very first appointment.',
       link: 'Discover NAMA',
       carousel: {
         label: 'Photos of the NAMA space',
@@ -572,24 +568,24 @@ const translations: Record<Locale, LocaleCopy> = {
         photos: {
           wall: 'Green lettering on the wall reading “Because every journey matters”',
           door: 'Entrance to a consultation room, with a frosted NAMA door and a “Don’t overthink it” poster',
-          salon: 'Bright waiting room with a sofa, armchairs and the NAMA logo on the wall',
+          salon: 'Bright waiting room at NAMA Polyclinic in Jal El Dib, with a sofa, armchairs and the NAMA logo on the wall',
           psy: 'Psychology office with a sofa, a wooden desk and light chairs',
           ortho: 'Children’s speech therapy room with toy shelves, a small table and a round rug',
         },
       },
     },
     services: {
-      eyebrow: 'Our specialties',
+      eyebrow: 'Our specialties in Jal El Dib',
       heading: ['Expertise that', 'works together.'],
       copy: 'One point of entry, then the right path. Our professionals work with precision, kindness and a shared vision of care.',
       index: '08 disciplines, 01 intention',
       nutritionSuffix: '/ Nutrition',
       specialties: {
-        speech: { title: 'Speech therapy', description: 'Supporting speech, language and swallowing at every age. A space to rebuild confidence in your voice and your connections.', detail: 'Articulation, language delay, stuttering, communication and swallowing difficulties.' },
-        mind: { title: 'Psychology', description: 'Making space for what you are experiencing, putting words to what weighs on you and moving forward with support tailored to children and adults.', detail: 'Emotional support, individual therapy, behavioral challenges and family support.' },
+        speech: { title: 'Speech therapy', description: 'Our speech therapists support speech, language and swallowing at every age. A space to rebuild confidence in your voice and your connections.', detail: 'Articulation, language delay, stuttering, communication and swallowing difficulties.' },
+        mind: { title: 'Psychology', description: 'Our clinical psychologists make space for what you are experiencing, help put words to what weighs on you and offer support tailored to children and adults.', detail: 'Emotional support, individual therapy, behavioral challenges and family support.' },
         motion: { title: 'Psychomotor therapy', description: 'Nurturing coordination, balance and the connection between body and emotions, especially in children.', detail: 'Motor development, sensory integration, graphomotor skills and adapted rehabilitation.' },
-        leaf: { title: 'Dietetics', description: 'Practical, personalized and judgment-free nutrition to care for yourself and your family every day.', detail: 'Meal plans, weight management, therapeutic diets and family nutrition guidance.' },
-        physio: { title: 'Physical therapy', description: 'Regaining mobility, strength and comfort after an injury or surgery, or when living with pain, with exercises adapted to every age.', detail: 'Rehabilitation, muscle and joint pain, back pain, post-surgery recovery and prevention.' },
+        leaf: { title: 'Dietetics', description: 'Our dietitian offers practical, personalized and judgment-free nutrition to care for yourself and your family every day.', detail: 'Meal plans, weight management, therapeutic diets and family nutrition guidance.' },
+        physio: { title: 'Physical therapy', description: 'Our physiotherapist helps you regain mobility, strength and comfort after an injury or surgery, or when living with pain, with exercises adapted to every age.', detail: 'Rehabilitation, muscle and joint pain, back pain, post-surgery recovery and prevention.' },
         nlp: { title: 'NLP', description: 'Neuro-Linguistic Programming: a coaching and therapeutic approach that works on how thoughts, language and behavior patterns connect, to help you change habits, manage stress and build confidence.', detail: 'Habit change, stress management, self-confidence, personal goals and coaching.' },
         psychiatry: { title: 'Psychiatry', description: 'Diagnosing, treating and preventing mental health conditions through medical care, including medication management when needed.', detail: 'Psychiatric assessment, diagnosis, treatment follow-up and medication management.' },
         education: { title: 'Special education', description: 'Tailored teaching and support for children with learning difficulties, developmental delays or disabilities, adapted to each child’s needs and pace.', detail: 'Learning difficulties, developmental delays, individualized education plans and school support.' },
@@ -732,6 +728,7 @@ const translations: Record<Locale, LocaleCopy> = {
         { question: 'Do you accept insurance?', answer: 'Reimbursement terms vary depending on your insurance and policy. Our team can tell you which documents are generally needed and will invite you to confirm your coverage with your insurer.' },
         { question: 'Do I need a medical prescription?', answer: 'A prescription is not always required to make an initial enquiry. Depending on the reason for your visit and the specialty, we may suggest asking your doctor for advice.' },
         { question: 'What ages do you support?', answer: 'NAMA welcomes children, teenagers and adults. We take the time to guide each person to the professional and pace that fit them best.' },
+        { question: 'Where is NAMA Polyclinic?', answer: 'In Jal El Dib, in the Metn, just minutes from Beirut. The map and directions are at the bottom of this page.' },
         { question: 'How long is a first session?', answer: 'The first meeting usually lasts between 45 and 60 minutes. It gives us time to meet, understand your needs and imagine the next step together.' },
         { question: 'Do you offer sessions in French, English or Arabic?', answer: 'Yes. Our welcome is designed to be accessible in French, English and Arabic. Let us know your preference when you book.' },
         { question: 'What is your cancellation policy?', answer: 'When possible, please let the clinic know at least 24 hours in advance. Contact us directly so we can find a new time.' },
@@ -744,7 +741,7 @@ const translations: Record<Locale, LocaleCopy> = {
       phone: 'Phone',
       whatsapp: 'Message the team directly',
       location: 'Find us',
-      address: ['WH5P+62F, Jal El Dib', 'Lebanon'],
+      address: ['WH5P+62F, Jal El Dib', 'Metn, Lebanon'],
       instagramAria: 'NAMA Polyclinic on Instagram',
       whatsappAria: 'NAMA Polyclinic on WhatsApp',
       directionsAria: 'Directions to NAMA Polyclinic',
@@ -786,7 +783,7 @@ const translations: Record<Locale, LocaleCopy> = {
     },
     location: {
       eyebrow: 'Before you visit',
-      heading: 'We are here for you.',
+      heading: 'We are here for you in Jal El Dib.',
       weekdays: 'Monday to Saturday',
       weekdayHours: '08:00 to 20:00',
       sunday: 'Sunday',
@@ -804,11 +801,6 @@ const translations: Record<Locale, LocaleCopy> = {
       privacy: 'Privacy',
       legal: 'Legal notice',
     },
-    meta: {
-      title: 'NAMA Polyclinic | Medical care in Jal El Dib',
-      description: 'NAMA Polyclinic, a medical and paramedical clinic in Jal El Dib. Speech therapy, psychology, psychomotor therapy, dietetics and physical therapy.',
-      keywords: 'Jal El Dib clinic, speech therapy, psychology, psychomotor therapy, dietetics, nutrition, physical therapy, Lebanon',
-    },
   },
   ar: {
     languageLabel: 'لغة الموقع',
@@ -817,7 +809,7 @@ const translations: Record<Locale, LocaleCopy> = {
     hero: {
       eyebrow: 'عيادة طبية وشبه طبية',
       heading: ['لأن كل مسيرة', 'تستحق الاهتمام.'],
-      lead: 'مساحة دافئة ومتعددة الاختصاصات في جل الديب، نرحّب فيها بكل شخص، طفلاً كان أم بالغاً، بعناية واهتمام.',
+      lead: 'مساحة دافئة ومتعددة الاختصاصات في جل الديب، المتن، على بُعد دقائق من بيروت، نرحّب فيها بكل شخص، طفلاً كان أم بالغاً، بعناية واهتمام.',
       book: 'احجزوا موعداً',
       services: 'اكتشفوا اختصاصاتنا',
       note: 'نتقدّم، معاً.',
@@ -826,7 +818,7 @@ const translations: Record<Locale, LocaleCopy> = {
     about: {
       eyebrow: 'لماذا ناما',
       heading: ['سقف واحد.', 'مسارات متعددة.'],
-      copy: 'تجمع ناما بين الرعاية الطبية وشبه الطبية للاهتمام بالإنسان ككل. نبدأ بالاستماع، ثم نبني معاً دعماً ينسجم معكم ومع طفلكم أو عائلتكم.',
+      copy: 'تجمع ناما في جل الديب بين الرعاية الطبية وشبه الطبية للاهتمام بالإنسان ككل. نبدأ بالاستماع، ثم نبني معاً دعماً ينسجم معكم ومع طفلكم أو عائلتكم.',
       markAlt: 'رمز ناما: شخص بالغ وطفل يحيطان بنبتة نامية',
       trust: [
         { title: 'فريق متعدد الاختصاصات', description: 'خبرات متكاملة في مكان واحد.' },
@@ -838,7 +830,7 @@ const translations: Record<Locale, LocaleCopy> = {
     clinic: {
       eyebrow: 'مساحة ناما',
       heading: ['مساحة لكل', 'مرحلة.'],
-      copy: 'عيادة مشرقة ومرحّبة، صُممت ليشعر الأطفال والبالغون وأحباؤهم بالراحة منذ الموعد الأول.',
+      copy: 'عيادة مشرقة ومرحّبة في جل الديب، صُممت ليشعر الأطفال والبالغون وأحباؤهم بالراحة منذ الموعد الأول.',
       link: 'اكتشفوا ناما',
       carousel: {
         label: 'صور مساحة ناما',
@@ -849,24 +841,24 @@ const translations: Record<Locale, LocaleCopy> = {
         photos: {
           wall: 'عبارة «Because every journey matters» بأحرف خضراء على الجدار',
           door: 'مدخل غرفة استشارة مع باب زجاجي يحمل شعار ناما وملصق «Don’t overthink it»',
-          salon: 'غرفة انتظار مشرقة مع كنبة ومقاعد وشعار ناما على الجدار',
+          salon: 'غرفة انتظار مشرقة في عيادة ناما في جل الديب، مع كنبة ومقاعد وشعار ناما على الجدار',
           psy: 'مكتب العلاج النفسي مع كنبة ومكتب خشبي وكراسٍ فاتحة اللون',
           ortho: 'غرفة النطق للأطفال مع رفوف ألعاب وطاولة صغيرة وسجادة دائرية',
         },
       },
     },
     services: {
-      eyebrow: 'اختصاصاتنا',
+      eyebrow: 'اختصاصاتنا في جل الديب',
       heading: ['خبرات', 'تتكامل.'],
       copy: 'نقطة بداية واحدة، ثم المسار المناسب. يعمل اختصاصيونا بدقة ولطف وبرؤية مشتركة للرعاية.',
       index: '08 اختصاصات، 01 غاية',
       nutritionSuffix: '/ التغذية',
       specialties: {
-        speech: { title: 'علاج النطق واللغة', description: 'دعم الكلام واللغة والبلع في كل عمر، ضمن مساحة لاستعادة الثقة بالصوت والتواصل.', detail: 'النطق، تأخر اللغة، التأتأة، صعوبات التواصل والبلع.' },
-        mind: { title: 'علم النفس', description: 'الإصغاء إلى ما تعيشونه، ووضع كلمات لما يثقل عليكم، والتقدم بدعم يناسب الأطفال والبالغين.', detail: 'الدعم العاطفي، العلاج الفردي، الصعوبات السلوكية والدعم العائلي.' },
+        speech: { title: 'علاج النطق واللغة', description: 'مع اختصاصياتنا في علاج النطق واللغة: دعم الكلام واللغة والبلع في كل عمر، ضمن مساحة لاستعادة الثقة بالصوت والتواصل.', detail: 'النطق، تأخر اللغة، التأتأة، صعوبات التواصل والبلع.' },
+        mind: { title: 'علم النفس', description: 'مع اختصاصياتنا في علم النفس: الإصغاء إلى ما تعيشونه، ووضع كلمات لما يثقل عليكم، والتقدم بدعم يناسب الأطفال والبالغين.', detail: 'الدعم العاطفي، العلاج الفردي، الصعوبات السلوكية والدعم العائلي.' },
         motion: { title: 'العلاج النفسي الحركي', description: 'تنمية التنسيق والتوازن والعلاقة بين الجسد والمشاعر، ولا سيما لدى الأطفال.', detail: 'النمو الحركي، التكامل الحسي، المهارات الحركية الدقيقة وإعادة التأهيل الملائمة.' },
-        leaf: { title: 'علم التغذية', description: 'تغذية عملية وشخصية ومن دون أحكام للعناية بكم وبعائلتكم كل يوم.', detail: 'خطط غذائية، إدارة الوزن، حميات علاجية وإرشادات للتغذية العائلية.' },
-        physio: { title: 'العلاج الفيزيائي', description: 'استعادة الحركة والقوة والراحة بعد إصابة أو عملية جراحية أو عند الشعور بالألم، من خلال تمارين ملائمة لكل عمر.', detail: 'إعادة التأهيل، آلام العضلات والمفاصل، آلام الظهر، التعافي بعد الجراحة والوقاية.' },
+        leaf: { title: 'علم التغذية', description: 'مع اختصاصية التغذية لدينا: تغذية عملية وشخصية ومن دون أحكام للعناية بكم وبعائلتكم كل يوم.', detail: 'خطط غذائية، إدارة الوزن، حميات علاجية وإرشادات للتغذية العائلية.' },
+        physio: { title: 'العلاج الفيزيائي', description: 'مع اختصاصي العلاج الفيزيائي لدينا: استعادة الحركة والقوة والراحة بعد إصابة أو عملية جراحية أو عند الشعور بالألم، من خلال تمارين ملائمة لكل عمر.', detail: 'إعادة التأهيل، آلام العضلات والمفاصل، آلام الظهر، التعافي بعد الجراحة والوقاية.' },
         nlp: { title: 'البرمجة اللغوية العصبية', description: 'مقاربة في التدريب والعلاج تعمل على العلاقة بين الأفكار واللغة وأنماط السلوك، لمساعدتكم على تغيير العادات وإدارة التوتر وبناء الثقة بالنفس.', detail: 'تغيير العادات، إدارة التوتر، الثقة بالنفس، الأهداف الشخصية والتدريب.' },
         psychiatry: { title: 'الطب النفسي', description: 'تشخيص الاضطرابات النفسية وعلاجها والوقاية منها ضمن متابعة طبية، مع إدارة الأدوية عند الحاجة.', detail: 'التقييم النفسي، التشخيص، متابعة العلاج وإدارة الأدوية.' },
         education: { title: 'التربية المختصة', description: 'تعليم ودعم مصمَّمان خصيصاً للأطفال الذين يواجهون صعوبات تعلّمية أو تأخراً في النمو أو إعاقة، بما يتلاءم مع حاجات كل طفل ووتيرته.', detail: 'صعوبات التعلّم، تأخر النمو، خطط تعليمية فردية ودعم مدرسي.' },
@@ -1009,6 +1001,7 @@ const translations: Record<Locale, LocaleCopy> = {
         { question: 'هل تقبلون التأمين؟', answer: 'تختلف شروط الاسترداد بحسب شركة التأمين والعقد. سيخبركم فريقنا بالمستندات المطلوبة عادةً، وننصحكم بالتأكد من التغطية مع شركة التأمين.' },
         { question: 'هل أحتاج إلى وصفة طبية؟', answer: 'لا تكون الوصفة ضرورية دائماً للتواصل الأول. وبحسب سبب الزيارة والاختصاص، قد ننصحكم باستشارة طبيبكم.' },
         { question: 'ما الأعمار التي تستقبلونها؟', answer: 'تستقبل ناما الأطفال والمراهقين والبالغين. نأخذ الوقت لتوجيه كل شخص إلى الاختصاصي والوتيرة الأنسب له.' },
+        { question: 'أين تقع عيادة ناما؟', answer: 'في جل الديب، في قضاء المتن، على بُعد دقائق من بيروت. تجدون الخريطة والاتجاهات في أسفل هذه الصفحة.' },
         { question: 'ما مدة الجلسة الأولى؟', answer: 'تستغرق الجلسة الأولى عادةً بين 45 و60 دقيقة، ما يتيح لنا التعارف وفهم طلبكم وتخيّل الخطوة التالية معاً.' },
         { question: 'هل تقدمون جلسات بالفرنسية أو الإنكليزية أو العربية؟', answer: 'نعم. صُمم استقبالنا ليكون متاحاً بالفرنسية والإنكليزية والعربية. أخبرونا بتفضيلكم عند حجز الموعد.' },
         { question: 'ما سياسة إلغاء الموعد؟', answer: 'نرجو، عندما يكون ذلك ممكناً، إبلاغ العيادة قبل 24 ساعة على الأقل. تواصلوا معنا مباشرةً لإيجاد موعد جديد.' },
@@ -1021,7 +1014,7 @@ const translations: Record<Locale, LocaleCopy> = {
       phone: 'الهاتف',
       whatsapp: 'اكتبوا مباشرةً إلى الفريق',
       location: 'موقعنا',
-      address: ['WH5P+62F، جل الديب', 'لبنان'],
+      address: ['WH5P+62F، جل الديب', 'المتن، لبنان'],
       instagramAria: 'حساب ناما على إنستغرام',
       whatsappAria: 'حساب ناما على واتساب',
       directionsAria: 'الاتجاهات إلى عيادة ناما',
@@ -1063,7 +1056,7 @@ const translations: Record<Locale, LocaleCopy> = {
     },
     location: {
       eyebrow: 'قبل الزيارة',
-      heading: 'نحن بانتظاركم.',
+      heading: 'نحن بانتظاركم في جل الديب.',
       weekdays: 'من الإثنين إلى السبت',
       weekdayHours: '08:00 حتى 20:00',
       sunday: 'الأحد',
@@ -1080,11 +1073,6 @@ const translations: Record<Locale, LocaleCopy> = {
       tagline: 'رعاية طبية وشبه طبية، بمعنى.',
       privacy: 'الخصوصية',
       legal: 'إشعار قانوني',
-    },
-    meta: {
-      title: 'عيادة ناما | رعاية طبية في جل الديب',
-      description: 'عيادة ناما الطبية وشبه الطبية في جل الديب. علاج النطق واللغة، علم النفس، العلاج النفسي الحركي، التغذية والعلاج الفيزيائي.',
-      keywords: 'عيادة جل الديب، علاج النطق واللغة، علم النفس، العلاج النفسي الحركي، التغذية، العلاج الفيزيائي، لبنان',
     },
   },
 };
@@ -1140,12 +1128,12 @@ function Portrait({ index, ariaLabel }: { index: number; ariaLabel: string }) {
   );
 }
 
-function PersonPortrait({ name, index, copy }: { name: string; index: number; copy: LocaleCopy['team'] }) {
+function PersonPortrait({ name, alt, index, copy }: { name: string; alt: string; index: number; copy: LocaleCopy['team'] }) {
   const photo = teamPhoto(name);
   if (photo) {
     return (
       <div className="person-portrait has-photo">
-        <img className="person-photo" src={photo.src} alt={name} loading="lazy" style={{ objectPosition: `center ${photo.focus}` }} />
+        <img className="person-photo" src={photo.src} alt={alt} loading="lazy" style={{ objectPosition: `center ${photo.focus}` }} />
       </div>
     );
   }
@@ -1183,7 +1171,7 @@ function PersonCard({ person, group, index, copy, open, onToggle }: {
     >
       <div className={`person-card-inner${open ? ' is-open' : ''}`} onClick={hasDetails ? onToggle : undefined}>
         <div className="person-media">
-          <PersonPortrait name={person.name} index={index} copy={copy} />
+          <PersonPortrait name={person.name} alt={[person.name, person.specialty].filter(Boolean).join(', ')} index={index} copy={copy} />
           {hasDetails && (
             <>
               <div className="person-details" id={detailsId} data-testid={`details-${group}-${index}`}>
@@ -1219,7 +1207,7 @@ function PersonCard({ person, group, index, copy, open, onToggle }: {
 }
 
 function Home() {
-  const [locale, setLocale] = useLocale();
+  const [locale, setLocale] = useLocale({ home: true });
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [formStatus, setFormStatus] = useState<FormStatus>('idle');
@@ -1230,22 +1218,14 @@ function Home() {
   const revealRoot = useRef<HTMLDivElement>(null);
   const copy = translations[locale];
 
+  // Each language's page (/, /fr/, /ar/) is built with its own head; keep it in step when switching.
   useEffect(() => {
-    document.title = copy.meta.title;
-
-    const updateMeta = (name: string, content: string) => {
-      let meta = document.querySelector(`meta[name="${name}"]`);
-      if (!meta) {
-        meta = document.createElement('meta');
-        meta.setAttribute('name', name);
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute('content', content);
-    };
-
-    updateMeta('description', copy.meta.description);
-    updateMeta('keywords', copy.meta.keywords);
-  }, [locale, copy]);
+    document.title = pageMeta[locale].title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', pageMeta[locale].description);
+    const canonical = document.querySelector('link[rel="canonical"]');
+    const alternate = document.querySelector(`link[rel="alternate"][hreflang="${locale}"]`);
+    if (canonical && alternate) canonical.setAttribute('href', alternate.getAttribute('href')!);
+  }, [locale]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
@@ -1585,7 +1565,7 @@ function Home() {
                 <div className="contact-detail"><MessageCircle size={18} /><div><strong>{copy.footer.whatsapp}</strong><a href={CLINIC_PHONE.whatsapp} target="_blank" rel="noreferrer" data-testid="link-contact-whatsapp">{copy.contact.whatsapp}</a></div></div>
                 <div className="contact-detail"><MapPin size={18} /><div><strong>{copy.contact.location}</strong><span>{copy.contact.address.join(', ')}</span></div></div>
               </div>
-              <div className="contact-socials"><a href="https://www.instagram.com/namapolyclinic" target="_blank" rel="noreferrer" className="social-link" aria-label={copy.contact.instagramAria} data-testid="link-instagram"><Instagram size={17} /></a><a href={CLINIC_PHONE.whatsapp} target="_blank" rel="noreferrer" className="social-link" aria-label={copy.contact.whatsappAria} data-testid="link-whatsapp"><MessageCircle size={17} /></a><a href="https://maps.google.com/?q=WH5P%2B62F%20Jal%20El%20Dib%20Lebanon" target="_blank" rel="noreferrer" className="social-link" aria-label={copy.contact.directionsAria} data-testid="link-directions"><Navigation size={17} /></a></div>
+              <div className="contact-socials"><a href={CLINIC_INSTAGRAM} target="_blank" rel="noreferrer" className="social-link" aria-label={copy.contact.instagramAria} data-testid="link-instagram"><Instagram size={17} /></a><a href={CLINIC_PHONE.whatsapp} target="_blank" rel="noreferrer" className="social-link" aria-label={copy.contact.whatsappAria} data-testid="link-whatsapp"><MessageCircle size={17} /></a><a href={CLINIC_MAP} target="_blank" rel="noreferrer" className="social-link" aria-label={copy.contact.directionsAria} data-testid="link-directions"><Navigation size={17} /></a></div>
             </div>
             <div className="contact-column reveal reveal-delay-1">
               <div className="contact-form">
@@ -1647,7 +1627,7 @@ function Home() {
           <div className="footer-grid">
             <div><img className="footer-logo" src={topLogo} alt={copy.logoAlt} /><p className="footer-copy">{copy.footer.copy}</p></div>
             <div><h3>{copy.footer.explore}</h3><div className="footer-links">{navItems.slice(0, 6).map(({ key, href, testId }) => <a key={href} href={href} data-testid={`link-footer-${testId}`}>{copy.nav[key]}</a>)}</div></div>
-            <div><h3>{copy.footer.findUs}</h3><div className="footer-contact"><a href={CLINIC_PHONE.tel} data-testid="link-footer-phone">{phoneText}</a><a href={CLINIC_PHONE.whatsapp} target="_blank" rel="noreferrer" data-testid="link-footer-whatsapp">{copy.footer.whatsapp}</a><a href="https://www.instagram.com/namapolyclinic" target="_blank" rel="noreferrer" data-testid="link-footer-instagram">@namapolyclinic</a><span>{copy.contact.address[0]}<br />{copy.contact.address[1]}</span></div></div>
+            <div><h3>{copy.footer.findUs}</h3><div className="footer-contact"><a href={CLINIC_PHONE.tel} data-testid="link-footer-phone">{phoneText}</a><a href={CLINIC_PHONE.whatsapp} target="_blank" rel="noreferrer" data-testid="link-footer-whatsapp">{copy.footer.whatsapp}</a><a href={CLINIC_INSTAGRAM} target="_blank" rel="noreferrer" data-testid="link-footer-instagram">@namapolyclinic</a><span>{copy.contact.address[0]}<br />{copy.contact.address[1]}</span></div></div>
           </div>
           <div className="footer-bottom"><span>© {new Date().getFullYear()} NAMA Polyclinic. {copy.footer.rights}</span><span className="footer-legal"><a href={legalHref('privacy')} data-testid="link-footer-privacy">{copy.footer.privacy}</a><a href={legalHref('legal')} data-testid="link-footer-legal">{copy.footer.legal}</a></span><span>{copy.footer.tagline}</span></div>
         </div>

@@ -85,6 +85,29 @@ test.describe('home page', () => {
     await expect(page.locator('h1')).toHaveText('Privacy policy');
   });
 
+  test('each language has its own address and head, and the switcher moves between them', async ({ page, request }) => {
+    // The built pages already carry the language's title and lang, before any script runs.
+    for (const [path, lang, title] of [['/', 'en', 'Psychologist'], ['/fr/', 'fr', 'Psychologue'], ['/ar/', 'ar', 'اختصاصي نفسي']]) {
+      const html = await (await request.get(path)).text();
+      expect(html).toContain(`<html lang="${lang}"`);
+      expect(html).toMatch(new RegExp(`<title>[^<]*${title}`));
+      expect(html).toContain('"@type":"MedicalClinic"');
+    }
+    await page.goto('/ar/');
+    await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
+    await expect(page.locator('.hero h1')).toContainText('لأن كل مسيرة');
+    const switcher = page.locator('.site-header .language-switcher');
+    await switcher.getByRole('button', { name: 'FR' }).click();
+    await expect(page).toHaveURL(/\/fr\/$/);
+    await expect(page).toHaveTitle(/Orthophoniste/);
+    await switcher.getByRole('button', { name: 'EN' }).click();
+    await expect(page).toHaveURL(/:4173\/$/);
+    // Older ?lang= links land on the language's own address.
+    await page.goto('/?lang=fr');
+    await expect(page).toHaveURL(/\/fr\/$/);
+    await expect(page.locator('.hero h1')).toContainText('Parce que chaque');
+  });
+
   test('opens in English, at the top, with every FAQ question closed', async ({ page }) => {
     await page.goto('/#faq');
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');

@@ -27,7 +27,9 @@ pnpm dev               # http://localhost:5173
 |----------------------------------------|------------------------------------|
 | All page text (FR, EN, AR), team, form | `src/App.tsx` (`translations`)     |
 | Privacy policy and legal notice        | `src/legal.tsx`                    |
-| Phone number, email, page links        | `src/site.ts`                      |
+| Phone, email, Instagram, map link      | `src/clinic.ts`                    |
+| Search titles and descriptions, Google data | `src/clinic.ts`                 |
+| Language addresses (/, /fr/, /ar/)     | `src/site.ts`, `vite.config.ts`    |
 | Styles                                 | `src/index.css`                    |
 | Team photos (how to add someone)       | `src/assets/team/` (see its README)|
 | Icons, share image, redirects          | `public/`                          |

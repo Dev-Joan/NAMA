@@ -478,13 +478,15 @@ export function LegalPage({ page }: { page: LegalPageKey }) {
     // index.html points canonical at the home page; this page is its own canonical.
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) canonical.setAttribute('href', new URL(legalHref(page), canonical.getAttribute('href') ?? window.location.href).href);
+    // The language versions listed in index.html belong to the home page, not this one.
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((link) => link.remove());
   }, [document_, page]);
 
   return (
     <div className="legal-page">
       <header className="legal-header">
         <div className="container nav-shell">
-          <a href={homeHref} className="brand-lockup" aria-label={copy.logoAlt} data-testid="link-legal-home">
+          <a href={homeHref(locale)} className="brand-lockup" aria-label={copy.logoAlt} data-testid="link-legal-home">
             <img src={topLogo} alt={copy.logoAlt} />
           </a>
           <div className="header-actions">
@@ -495,7 +497,7 @@ export function LegalPage({ page }: { page: LegalPageKey }) {
                 </button>
               ))}
             </div>
-            <a href={homeHref} className="button button-outline legal-back" aria-label={copy.back} data-testid="link-legal-back"><ArrowLeft size={14} /> <span className="legal-back-label">{copy.back}</span></a>
+            <a href={homeHref(locale)} className="button button-outline legal-back" aria-label={copy.back} data-testid="link-legal-back"><ArrowLeft size={14} /> <span className="legal-back-label">{copy.back}</span></a>
           </div>
         </div>
       </header>
