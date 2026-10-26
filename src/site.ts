@@ -28,20 +28,23 @@ export function legalPageFromLocation(): LegalPageKey | null {
   return (Object.keys(legalSlugs) as LegalPageKey[]).find((page) => legalSlugs[page] === slug) ?? null;
 }
 
+// Every visit starts in English (or the ?lang= in the link). A language picked on the
+// switcher is kept only for the rest of the visit (sessionStorage), e.g. on the legal pages.
 function initialLocale(): Locale {
   const queryLocale = new URLSearchParams(window.location.search).get('lang');
   if (queryLocale === 'fr' || queryLocale === 'en' || queryLocale === 'ar') return queryLocale;
-  const savedLocale = window.localStorage.getItem('nama-locale');
-  return savedLocale === 'en' || savedLocale === 'ar' ? savedLocale : 'fr';
+  let savedLocale: string | null = null;
+  try { savedLocale = window.sessionStorage.getItem('nama-locale'); } catch { /* storage blocked */ }
+  return savedLocale === 'fr' || savedLocale === 'ar' ? savedLocale : 'en';
 }
 
-// Current language, remembered across pages and visits; keeps <html lang/dir> in sync.
+// Current language, remembered for the rest of the visit; keeps <html lang/dir> in sync.
 export function useLocale() {
   const [locale, setLocale] = useState<Locale>(initialLocale);
   useEffect(() => {
     document.documentElement.lang = locale;
     document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
-    window.localStorage.setItem('nama-locale', locale);
+    try { window.sessionStorage.setItem('nama-locale', locale); } catch { /* storage blocked */ }
   }, [locale]);
   return [locale, setLocale] as const;
 }

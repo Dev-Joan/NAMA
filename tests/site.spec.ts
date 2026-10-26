@@ -85,6 +85,25 @@ test.describe('home page', () => {
     await expect(page.locator('h1')).toHaveText('Privacy policy');
   });
 
+  test('opens in English, at the top, with every FAQ question closed', async ({ page }) => {
+    await page.goto('/#faq');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+    await expect(page.locator('.hero h1')).toContainText('Because every journey');
+    expect(await page.evaluate(() => scrollY)).toBeLessThan(5);
+    expect(await page.locator('.faq-item[open]').count()).toBe(0);
+    // A language picked during the visit is kept on reload; a new visit starts in English again.
+    await page.locator('.site-header .language-switcher').getByRole('button', { name: 'FR' }).click();
+    await page.evaluate(() => scrollTo(0, 2000));
+    await page.reload();
+    await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
+    expect(await page.evaluate(() => scrollY)).toBeLessThan(5);
+    const fresh = await page.context().newPage();
+    await fresh.goto('/');
+    await expect(fresh.locator('html')).toHaveAttribute('lang', 'en');
+    await fresh.locator('.faq-item summary').first().click();
+    await expect(fresh.locator('.faq-item').first()).toHaveAttribute('open', '');
+  });
+
   test('every menu item scrolls to a section that is not hidden under the header', async ({ page }) => {
     test.setTimeout(60_000);
     await page.goto('/?lang=fr');

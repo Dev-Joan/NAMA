@@ -24,11 +24,12 @@ import {
 import topLogo from './assets/nama-top-logo.png';
 import namaIcon from './assets/nama-icon.png';
 import './index.css';
+import { ClinicCarousel, type ClinicCarouselCopy } from './components/clinic-carousel';
 import { LegalPage } from './legal';
 import { CLINIC_PHONE, legalHref, legalPageFromLocation, locales, phoneText, useLocale, whatsappLink, withPhone, type Locale } from './site';
 
 type NavKey = 'home' | 'about' | 'services' | 'team' | 'visit' | 'testimonials' | 'faq' | 'contact';
-type SpecialtyKey = 'speech' | 'mind' | 'motion' | 'leaf' | 'physio';
+type SpecialtyKey = 'speech' | 'mind' | 'motion' | 'leaf' | 'physio' | 'nlp' | 'psychiatry' | 'education';
 
 const navItems: { key: NavKey; href: string; testId: string }[] = [
   { key: 'home', href: '#accueil', testId: 'accueil' },
@@ -64,7 +65,7 @@ function teamPhoto(name: string) {
   return file ? { src: teamPhotoFiles[file], focus: member.focus } : undefined;
 }
 
-const specialtyKeys: SpecialtyKey[] = ['speech', 'mind', 'motion', 'leaf', 'physio'];
+const specialtyKeys: SpecialtyKey[] = ['speech', 'mind', 'motion', 'leaf', 'physio', 'nlp', 'psychiatry', 'education'];
 
 const NAME_MAX = 100;
 const MESSAGE_MAX = 1000;
@@ -139,8 +140,7 @@ interface LocaleCopy {
     heading: [string, string];
     copy: string;
     link: string;
-    photo: string;
-    photoNote: string;
+    carousel: ClinicCarouselCopy;
   };
   services: {
     eyebrow: string;
@@ -176,8 +176,7 @@ interface LocaleCopy {
   testimonials: {
     eyebrow: string;
     heading: [string, string];
-    reserved: string;
-    cards: { quote: string; text: string; cite: string }[];
+    cards: { quote: string; cite: string }[];
   };
   faq: {
     eyebrow: string;
@@ -287,14 +286,26 @@ const translations: Record<Locale, LocaleCopy> = {
       heading: ['Un espace pour', 'chaque étape.'],
       copy: 'Un cabinet lumineux et accueillant, pensé pour que les enfants, les adultes et leurs proches se sentent à leur place dès le premier rendez vous.',
       link: 'Découvrir NAMA',
-      photo: 'Photo du bâtiment',
-      photoNote: 'À ajouter prochainement',
+      carousel: {
+        label: 'Photos du lieu NAMA',
+        previous: 'Photo précédente',
+        next: 'Photo suivante',
+        goTo: 'Afficher la photo',
+        photoFallback: 'Le lieu NAMA',
+        photos: {
+          wall: 'Mur d’accueil vert avec la phrase « Because every journey matters »',
+          door: 'Entrée d’une salle de consultation, porte vitrée NAMA et affiche « Don’t overthink it »',
+          salon: 'Salle d’attente lumineuse avec canapé, fauteuils et logo NAMA au mur',
+          psy: 'Bureau de psychologie avec canapé, bureau en bois et chaises claires',
+          ortho: 'Salle d’orthophonie pour enfants avec étagères de jeux, petite table et tapis rond',
+        },
+      },
     },
     services: {
       eyebrow: 'Nos spécialités',
       heading: ['Des expertises qui', 'se complètent.'],
       copy: 'Une porte d’entrée, puis le bon chemin. Nos professionnels travaillent avec précision, bienveillance et une vision commune du soin.',
-      index: '05 disciplines, 01 intention',
+      index: '08 disciplines, 01 intention',
       nutritionSuffix: '/ Nutrition',
       specialties: {
         speech: { title: 'Orthophonie', description: 'Accompagner la parole, le langage et la déglutition, à chaque âge. Un espace pour retrouver confiance dans sa voix et ses échanges.', detail: 'Articulation, retard de langage, bégaiement, troubles de la communication et de la déglutition.' },
@@ -302,6 +313,9 @@ const translations: Record<Locale, LocaleCopy> = {
         motion: { title: 'Psychomotricité', description: 'Faire grandir la coordination, l’équilibre et le lien entre le corps et les émotions, principalement chez l’enfant.', detail: 'Développement moteur, intégration sensorielle, graphomotricité et rééducation adaptée.' },
         leaf: { title: 'Diététique', description: 'Une nutrition concrète, personnalisée et sans jugement pour prendre soin de soi et de sa famille au quotidien.', detail: 'Plans alimentaires, gestion du poids, régimes thérapeutiques et conseils en nutrition familiale.' },
         physio: { title: 'Physiothérapie', description: 'Retrouver mobilité, force et confort après une blessure, une opération ou face à la douleur, avec des exercices adaptés à chaque âge.', detail: 'Rééducation, douleurs musculaires et articulaires, mal de dos, récupération après chirurgie et prévention.' },
+        nlp: { title: 'PNL', description: 'La programmation neuro-linguistique : une approche de coaching et d’accompagnement thérapeutique qui travaille sur le lien entre pensées, langage et comportements, pour changer ses habitudes, mieux gérer le stress et prendre confiance en soi.', detail: 'Changement d’habitudes, gestion du stress, confiance en soi, objectifs personnels et coaching.' },
+        psychiatry: { title: 'Psychiatrie', description: 'Diagnostiquer, traiter et prévenir les troubles de santé mentale grâce à un suivi médical, avec une prise en charge médicamenteuse lorsque c’est nécessaire.', detail: 'Évaluation psychiatrique, diagnostic, suivi du traitement et gestion des médicaments.' },
+        education: { title: 'Éducation spécialisée', description: 'Un enseignement et un accompagnement sur mesure pour les enfants ayant des difficultés d’apprentissage, un retard de développement ou un handicap, au rythme et selon les besoins de chacun.', detail: 'Difficultés d’apprentissage, retards de développement, projets éducatifs individualisés et soutien scolaire.' },
       },
     },
     team: {
@@ -426,11 +440,10 @@ const translations: Record<Locale, LocaleCopy> = {
     testimonials: {
       eyebrow: 'Témoignages',
       heading: ['Des petits pas', 'qui comptent.'],
-      reserved: 'Espace réservé',
       cards: [
-        { quote: '« À venir »', text: 'Cet espace accueillera bientôt les mots de familles accompagnées par NAMA.', cite: 'Témoignage parent, bientôt disponible' },
-        { quote: '« À venir »', text: 'Nous préparons une collection de témoignages sincères, avec l’accord de nos patients.', cite: 'Témoignage patient, bientôt disponible' },
-        { quote: '« À venir »', text: 'Votre expérience pourra aider une autre famille à faire son premier pas.', cite: 'Témoignage famille, bientôt disponible' },
+        { quote: 'Honnêtement, je ne savais pas ce qu’était la PNL avant de rencontrer Miss Tracy. Elle a été très professionnelle, m’a tout expliqué clairement et m’a aidé·e à mieux me comprendre. Je suis content·e d’avoir essayé !', cite: 'Anonyme' },
+        { quote: 'Notre fille avait des difficultés en lecture et en orthographe depuis la KG3, et nous ne savions pas comment l’aider. Les séances nous ont permis de mieux comprendre ses difficultés, et nous commençons à voir des progrès. Nous sommes heureux d’avoir demandé de l’aide.', cite: 'Anonyme' },
+        { quote: 'Nous étions inquiets pour l’attention et la mémoire de notre enfant, surtout pour suivre les consignes. Nour a été très patiente et bienveillante, et elle nous a donné des conseils utiles pour mieux l’accompagner à la maison.', cite: 'Anonyme' },
       ],
     },
     faq: {
@@ -550,14 +563,26 @@ const translations: Record<Locale, LocaleCopy> = {
       heading: ['A place for', 'every step.'],
       copy: 'A bright, welcoming clinic designed so children, adults and their loved ones feel at home from their very first appointment.',
       link: 'Discover NAMA',
-      photo: 'Building photo',
-      photoNote: 'Coming soon',
+      carousel: {
+        label: 'Photos of the NAMA space',
+        previous: 'Previous photo',
+        next: 'Next photo',
+        goTo: 'Show photo',
+        photoFallback: 'The NAMA space',
+        photos: {
+          wall: 'Green lettering on the wall reading “Because every journey matters”',
+          door: 'Entrance to a consultation room, with a frosted NAMA door and a “Don’t overthink it” poster',
+          salon: 'Bright waiting room with a sofa, armchairs and the NAMA logo on the wall',
+          psy: 'Psychology office with a sofa, a wooden desk and light chairs',
+          ortho: 'Children’s speech therapy room with toy shelves, a small table and a round rug',
+        },
+      },
     },
     services: {
       eyebrow: 'Our specialties',
       heading: ['Expertise that', 'works together.'],
       copy: 'One point of entry, then the right path. Our professionals work with precision, kindness and a shared vision of care.',
-      index: '05 disciplines, 01 intention',
+      index: '08 disciplines, 01 intention',
       nutritionSuffix: '/ Nutrition',
       specialties: {
         speech: { title: 'Speech therapy', description: 'Supporting speech, language and swallowing at every age. A space to rebuild confidence in your voice and your connections.', detail: 'Articulation, language delay, stuttering, communication and swallowing difficulties.' },
@@ -565,6 +590,9 @@ const translations: Record<Locale, LocaleCopy> = {
         motion: { title: 'Psychomotor therapy', description: 'Nurturing coordination, balance and the connection between body and emotions, especially in children.', detail: 'Motor development, sensory integration, graphomotor skills and adapted rehabilitation.' },
         leaf: { title: 'Dietetics', description: 'Practical, personalized and judgment-free nutrition to care for yourself and your family every day.', detail: 'Meal plans, weight management, therapeutic diets and family nutrition guidance.' },
         physio: { title: 'Physical therapy', description: 'Regaining mobility, strength and comfort after an injury or surgery, or when living with pain, with exercises adapted to every age.', detail: 'Rehabilitation, muscle and joint pain, back pain, post-surgery recovery and prevention.' },
+        nlp: { title: 'NLP', description: 'Neuro-Linguistic Programming: a coaching and therapeutic approach that works on how thoughts, language and behavior patterns connect, to help you change habits, manage stress and build confidence.', detail: 'Habit change, stress management, self-confidence, personal goals and coaching.' },
+        psychiatry: { title: 'Psychiatry', description: 'Diagnosing, treating and preventing mental health conditions through medical care, including medication management when needed.', detail: 'Psychiatric assessment, diagnosis, treatment follow-up and medication management.' },
+        education: { title: 'Special education', description: 'Tailored teaching and support for children with learning difficulties, developmental delays or disabilities, adapted to each child’s needs and pace.', detail: 'Learning difficulties, developmental delays, individualized education plans and school support.' },
       },
     },
     team: {
@@ -689,11 +717,10 @@ const translations: Record<Locale, LocaleCopy> = {
     testimonials: {
       eyebrow: 'Testimonials',
       heading: ['Small steps', 'that matter.'],
-      reserved: 'Reserved space',
       cards: [
-        { quote: '“Coming soon”', text: 'This space will soon welcome words from families supported by NAMA.', cite: 'Parent testimonial, coming soon' },
-        { quote: '“Coming soon”', text: 'We are preparing a collection of sincere testimonials, with our patients’ consent.', cite: 'Patient testimonial, coming soon' },
-        { quote: '“Coming soon”', text: 'Your experience may help another family take their first step.', cite: 'Family testimonial, coming soon' },
+        { quote: 'I honestly didn’t know what NLP was before meeting Miss Tracy. She was very professional, explained everything clearly, and helped me better understand myself. I’m glad I gave it a try!', cite: 'Anonymous' },
+        { quote: 'My daughter was struggling with reading and spelling since KG3, and we weren’t sure how to help. The sessions have helped us better understand her difficulties, and we’re starting to see progress. We’re happy we decided to seek support.', cite: 'Anonymous' },
+        { quote: 'We were concerned about our child’s attention and memory, especially when following instructions. Nour has been very patient and supportive, and she gave us helpful feedback on how to create the best support at home.', cite: 'Anonymous' },
       ],
     },
     faq: {
@@ -813,14 +840,26 @@ const translations: Record<Locale, LocaleCopy> = {
       heading: ['مساحة لكل', 'مرحلة.'],
       copy: 'عيادة مشرقة ومرحّبة، صُممت ليشعر الأطفال والبالغون وأحباؤهم بالراحة منذ الموعد الأول.',
       link: 'اكتشفوا ناما',
-      photo: 'صورة المبنى',
-      photoNote: 'ستُضاف قريباً',
+      carousel: {
+        label: 'صور مساحة ناما',
+        previous: 'الصورة السابقة',
+        next: 'الصورة التالية',
+        goTo: 'عرض الصورة',
+        photoFallback: 'مساحة ناما',
+        photos: {
+          wall: 'عبارة «Because every journey matters» بأحرف خضراء على الجدار',
+          door: 'مدخل غرفة استشارة مع باب زجاجي يحمل شعار ناما وملصق «Don’t overthink it»',
+          salon: 'غرفة انتظار مشرقة مع كنبة ومقاعد وشعار ناما على الجدار',
+          psy: 'مكتب العلاج النفسي مع كنبة ومكتب خشبي وكراسٍ فاتحة اللون',
+          ortho: 'غرفة النطق للأطفال مع رفوف ألعاب وطاولة صغيرة وسجادة دائرية',
+        },
+      },
     },
     services: {
       eyebrow: 'اختصاصاتنا',
       heading: ['خبرات', 'تتكامل.'],
       copy: 'نقطة بداية واحدة، ثم المسار المناسب. يعمل اختصاصيونا بدقة ولطف وبرؤية مشتركة للرعاية.',
-      index: '05 اختصاصات، 01 غاية',
+      index: '08 اختصاصات، 01 غاية',
       nutritionSuffix: '/ التغذية',
       specialties: {
         speech: { title: 'علاج النطق واللغة', description: 'دعم الكلام واللغة والبلع في كل عمر، ضمن مساحة لاستعادة الثقة بالصوت والتواصل.', detail: 'النطق، تأخر اللغة، التأتأة، صعوبات التواصل والبلع.' },
@@ -828,6 +867,9 @@ const translations: Record<Locale, LocaleCopy> = {
         motion: { title: 'العلاج النفسي الحركي', description: 'تنمية التنسيق والتوازن والعلاقة بين الجسد والمشاعر، ولا سيما لدى الأطفال.', detail: 'النمو الحركي، التكامل الحسي، المهارات الحركية الدقيقة وإعادة التأهيل الملائمة.' },
         leaf: { title: 'علم التغذية', description: 'تغذية عملية وشخصية ومن دون أحكام للعناية بكم وبعائلتكم كل يوم.', detail: 'خطط غذائية، إدارة الوزن، حميات علاجية وإرشادات للتغذية العائلية.' },
         physio: { title: 'العلاج الفيزيائي', description: 'استعادة الحركة والقوة والراحة بعد إصابة أو عملية جراحية أو عند الشعور بالألم، من خلال تمارين ملائمة لكل عمر.', detail: 'إعادة التأهيل، آلام العضلات والمفاصل، آلام الظهر، التعافي بعد الجراحة والوقاية.' },
+        nlp: { title: 'البرمجة اللغوية العصبية', description: 'مقاربة في التدريب والعلاج تعمل على العلاقة بين الأفكار واللغة وأنماط السلوك، لمساعدتكم على تغيير العادات وإدارة التوتر وبناء الثقة بالنفس.', detail: 'تغيير العادات، إدارة التوتر، الثقة بالنفس، الأهداف الشخصية والتدريب.' },
+        psychiatry: { title: 'الطب النفسي', description: 'تشخيص الاضطرابات النفسية وعلاجها والوقاية منها ضمن متابعة طبية، مع إدارة الأدوية عند الحاجة.', detail: 'التقييم النفسي، التشخيص، متابعة العلاج وإدارة الأدوية.' },
+        education: { title: 'التربية المختصة', description: 'تعليم ودعم مصمَّمان خصيصاً للأطفال الذين يواجهون صعوبات تعلّمية أو تأخراً في النمو أو إعاقة، بما يتلاءم مع حاجات كل طفل ووتيرته.', detail: 'صعوبات التعلّم، تأخر النمو، خطط تعليمية فردية ودعم مدرسي.' },
       },
     },
     team: {
@@ -952,11 +994,10 @@ const translations: Record<Locale, LocaleCopy> = {
     testimonials: {
       eyebrow: 'آراء وتجارب',
       heading: ['خطوات صغيرة', 'تصنع فرقاً.'],
-      reserved: 'مساحة محجوزة',
       cards: [
-        { quote: '« قريباً »', text: 'ستستقبل هذه المساحة قريباً كلمات العائلات التي رافقتها ناما.', cite: 'رأي أحد الوالدين، قريباً' },
-        { quote: '« قريباً »', text: 'نحضّر مجموعة من الشهادات الصادقة بموافقة مرضانا.', cite: 'رأي أحد المرضى، قريباً' },
-        { quote: '« قريباً »', text: 'قد تساعد تجربتكم عائلة أخرى على اتخاذ خطوتها الأولى.', cite: 'رأي عائلة، قريباً' },
+        { quote: 'بصراحة، لم أكن أعرف ما هي البرمجة اللغوية العصبية قبل أن ألتقي بالآنسة تريسي. كانت محترفة جداً، وشرحت لي كل شيء بوضوح، وساعدتني على فهم نفسي بشكل أفضل. أنا سعيد/ة لأنني خضت التجربة!', cite: 'مجهول الهوية' },
+        { quote: 'كانت ابنتنا تعاني من صعوبات في القراءة والإملاء منذ صف KG3، ولم نكن نعرف كيف نساعدها. ساعدتنا الجلسات على فهم صعوباتها بشكل أفضل، وبدأنا نلاحظ تقدّماً. نحن سعداء لأننا قررنا طلب الدعم.', cite: 'مجهول الهوية' },
+        { quote: 'كنّا قلقين بشأن انتباه طفلنا وذاكرته، خاصةً عند اتباع التعليمات. كانت نور صبورة وداعمة جداً، وقدّمت لنا ملاحظات مفيدة حول كيفية توفير أفضل دعم له في المنزل.', cite: 'مجهول الهوية' },
       ],
     },
     faq: {
@@ -1071,6 +1112,15 @@ function SpecialtyIcon({ kind }: { kind: string }) {
   }
   if (kind === 'physio') {
     return <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="15" y="4" width="10" height="5" rx="2" stroke="currentColor" /><rect x="16" y="11" width="10" height="5" rx="2" stroke="currentColor" /><rect x="16.5" y="18" width="10" height="5" rx="2" stroke="currentColor" /><rect x="16" y="25" width="10" height="5" rx="2" stroke="currentColor" /><rect x="15" y="32" width="10" height="5" rx="2" stroke="currentColor" /><path d="M11 13c-2 4-2 10 0 14M31 13c2 4 2 10 0 14" stroke="currentColor" strokeLinecap="round" /></svg>;
+  }
+  if (kind === 'nlp') {
+    return <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M23 34v-5h3.5c1.7 0 3-1.3 3-3v-3.5l2.5-1-2.6-4.3C28.6 11 24.6 7 19 7 12.9 7 8 11.6 8 17.8c0 3.6 1.6 6.6 4.2 8.6V34" stroke="currentColor" strokeLinejoin="round" /><path d="M13 17.5c1.4-2.4 3.6-2.4 5 0s3.6 2.4 5 0" stroke="currentColor" strokeLinecap="round" /><path d="m21.5 14.5 1.6.5-.5 1.6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+  }
+  if (kind === 'psychiatry') {
+    return <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="5" y="16" width="26" height="11" rx="5.5" transform="rotate(-35 18 21.5)" stroke="currentColor" /><path d="m15.8 16.6 4.5 6.4" stroke="currentColor" strokeLinecap="round" /><path d="M31 5v7M27.5 8.5h7" stroke="currentColor" strokeLinecap="round" /></svg>;
+  }
+  if (kind === 'education') {
+    return <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 14c-3-2.4-7-3-12-2.4v19c5-.6 9 0 12 2.4 3-2.4 7-3 12-2.4v-19c-5-.6-9 0-12 2.4Z" stroke="currentColor" strokeLinejoin="round" /><path d="M20 14v19M20 5v4M13.5 7l1.6 2.6M26.5 7l-1.6 2.6" stroke="currentColor" strokeLinecap="round" /></svg>;
   }
   if (kind === 'motion') {
     return <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="24" cy="8" r="3.5" stroke="currentColor" /><path d="m22 13-5 8 5 4 4 8M17 21l-8 2M22 25l-8 8M26 16l7 5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" /><path d="M7 34h27" stroke="currentColor" strokeLinecap="round" /></svg>;
@@ -1219,19 +1269,16 @@ function Home() {
     return () => observer.disconnect();
   }, [locale]);
 
+  // The site always opens at the top: the browser does not restore the last scroll
+  // position on reload, and a #section left in the address (from the menu) is dropped.
   useEffect(() => {
-    const hash = window.location.hash.slice(1);
-    if (!hash) return;
-    const target = document.getElementById(hash);
-    if (!target) return;
-    const headerOffset = window.innerWidth <= 760 ? 76 : 92;
-    const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+    if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
+    if (window.location.hash) window.history.replaceState(null, '', window.location.pathname + window.location.search);
     const root = document.documentElement;
     const previousScrollBehavior = root.style.scrollBehavior;
     root.style.scrollBehavior = 'auto';
-    window.scrollTo(0, Math.max(0, targetTop));
+    window.scrollTo(0, 0);
     root.style.scrollBehavior = previousScrollBehavior;
-    target.querySelectorAll('.reveal').forEach((node) => node.classList.add('is-visible'));
   }, []);
 
   useEffect(() => {
@@ -1406,20 +1453,18 @@ function Home() {
         </section>
 
         <section className="section clinic-story" aria-labelledby="clinic-title">
-          <div className="container clinic-grid">
+          <div className="container clinic-intro">
             <div className="clinic-copy reveal">
                <div className="eyebrow">{copy.clinic.eyebrow}</div>
                <h2 id="clinic-title">{copy.clinic.heading[0]}<br /><em>{copy.clinic.heading[1]}</em></h2>
+            </div>
+            <div className="clinic-text reveal reveal-delay-1">
                <p>{copy.clinic.copy}</p>
                <a href="#a-propos" className="mini-link" data-testid="link-clinic-about">{copy.clinic.link} <ArrowUpRight size={13} /></a>
             </div>
-            <div className="clinic-visual reveal reveal-delay-1">
-               <div className="building-photo-slot" data-testid="photo-slot-building" aria-label={copy.clinic.photo}>
-                <div className="photo-slot-icon"><ImagePlus size={22} /></div>
-                 <span>{copy.clinic.photo}</span>
-                 <small>{copy.clinic.photoNote}</small>
-              </div>
-            </div>
+          </div>
+          <div className="reveal reveal-delay-2">
+            <ClinicCarousel copy={copy.clinic.carousel} />
           </div>
         </section>
 
@@ -1506,9 +1551,9 @@ function Home() {
                <h2 id="testimonials-title">{copy.testimonials.heading[0]}<br /><em>{copy.testimonials.heading[1]}</em></h2>
             </div>
             <div className="testimonial-grid">
-               {copy.testimonials.cards.map(({ quote, text, cite }, index) => (
+               {copy.testimonials.cards.map(({ quote, cite }, index) => (
                  <article className={`quote-card reveal reveal-delay-${index + 1}`} key={index} data-testid={`card-testimonial-${index}`}>
-                   <div><span className="placeholder-label">{copy.testimonials.reserved}</span><div className="quote-mark">“</div><blockquote>{quote}<br /><small>{text}</small></blockquote></div><cite>{cite}</cite>
+                   <div><div className="quote-mark">“</div><blockquote>{quote}</blockquote></div><cite>{cite}</cite>
                 </article>
               ))}
             </div>
@@ -1520,7 +1565,7 @@ function Home() {
             <div className="faq-intro reveal"><div className="eyebrow">{copy.faq.eyebrow}</div><h2 className="display">{copy.faq.heading[0]}<br /><em>{copy.faq.heading[1]}</em></h2><p>{copy.faq.copy}</p><a href="#contact" className="button button-outline" data-testid="button-faq-contact">{copy.faq.contact} <ArrowUpRight size={14} /></a></div>
             <div className="faq-list reveal reveal-delay-1">
               {copy.faq.items.map(({ question, answer }, index) => (
-                <details className="faq-item" key={index} open={index === 0}>
+                <details className="faq-item" key={index}>
                   <summary data-testid={`button-faq-${index}`}>{question}<Plus size={19} strokeWidth={1.5} /></summary>
                   <div className="faq-answer">{answer}</div>
                 </details>
